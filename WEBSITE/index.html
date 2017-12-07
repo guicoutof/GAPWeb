@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
   <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <link rel="icon" href="imagens/heart.png" type="image/gif" sizes="16x16">
   <title>GAP Med</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +12,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="css/style.css" rel="stylesheet" type="text/css">
+
+
+
  
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -31,77 +35,40 @@
         <li><a href="#about">SOBRE</a></li>
         <li><a href="#contact">CONTATO</a></li>
         <li><a href="#login">ENTRAR</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
       </ul>
     </div>
   </div>
 </nav>
 
+<!-- Parallax da home -->
 <div id="home" class="parallax" >
   <h1>Gerenciador de Acompanhamento<br>de Pacientes</h1>
     
 </div>
 
-<!-- Container (The Band Section) -->
+<!-- Container About -->
 <div id="about" class="container text-center">
   <h3>GAP MED</h3>
   <p><em>Gerenciador de Acompanhamento de Pacientes</em></p>
-  <p>Lorem ipsun dolor..</p>
+  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
   <br>
   
 </div>
-
-<!-- Container (TOUR Section) -->
-
   
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">×</button>
-          <h4><span class="glyphicon glyphicon-lock"></span> Tickets</h4>
-        </div>
-        <div class="modal-body">
-          <form role="form">
-            <div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-shopping-cart"></span> Tickets, $23 per person</label>
-              <input type="number" class="form-control" id="psw" placeholder="How many?">
-            </div>
-            <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Send To</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
-            </div>
-              <button type="submit" class="btn btn-block">Pay 
-                <span class="glyphicon glyphicon-ok"></span>
-              </button>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-            <span class="glyphicon glyphicon-remove"></span> Cancel
-          </button>
-          <p>Need <a href="#">help?</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Container (Contact Section) -->
-<div id="contact" class="container">
+<div id="contact" class="blackcontainer">
   <h3 class="text-center">Contact</h3>
-  <p class="text-center"><em>We love our fans!</em></p>
+  <p class="text-center"><em>We care!</em></p>
 
   <div class="row">
     <div class="col-md-4">
-      <p>Fan? Drop a note.</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
-      <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
-      <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+      <p> Contact us.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Presidente Prudente, Br</p>
+      <p><span class="glyphicon glyphicon-phone"></span> Phone: +55 14 996903532</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> Email: gui_coutof@gmail.com</p>
     </div>
+    <!-- inputs -->
     <div class="col-md-8">
       <div class="row">
         <div class="col-sm-6 form-group">
@@ -123,29 +90,11 @@
   <br>
 </div>
 
-<!-- Add Google Maps -->
-<div id="googleMap"></div>
-<script>
-function myMap() {
-var myCenter = new google.maps.LatLng(41.878114, -87.629798);
-var mapProp = {center:myCenter, zoom:12, scrollwheel:false, draggable:false, mapTypeId:google.maps.MapTypeId.ROADMAP};
-var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-var marker = new google.maps.Marker({position:myCenter});
-marker.setMap(map);
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
-<!--
-To use this code on your website, get a free API key from Google.
-Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
--->
-
 <!-- Footer -->
 <footer class="text-center">
   <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a><br><br>
-  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit w3schools">www.w3schools.com</a></p> 
 </footer>
 
 <script>
