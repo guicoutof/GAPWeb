@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <link rel="icon" href="imagens/heart.png" type="image/gif" sizes="16x16">
+  <link rel="icon" href="assets/img/heart.png" type="image/gif" sizes="16x16">
   <title>GAP Med</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="<? echo base_url();?>assets/css/style.css"  type="text/css">
+  <link rel="stylesheet" href="assets/css/style.css"  type="text/css">
 
 
 

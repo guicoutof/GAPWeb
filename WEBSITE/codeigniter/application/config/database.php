@@ -75,14 +75,14 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'www.gapmed.com',
-	'username' => 'admgap',
-	'password' => 'root',
-	'database' => 'gapmed',
-	'dbdriver' => 'mysql',
+	'hostname' => 'localhost',
+	'username' => '',
+	'password' => '',
+	'database' => '',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
-	'pconnect' => TRUE,
-	'db_debug' => TRUE,
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',
@@ -90,7 +90,7 @@ $db['default'] = array(
 	'swap_pre' => '',
 	'encrypt' => FALSE,
 	'compress' => FALSE,
-	'stricton' => false,
+	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
 );
