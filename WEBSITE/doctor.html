@@ -29,8 +29,9 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#myPage">CADASTRAR</a></li>
-        <li><a href="#contact">PERFIL</a></li>
+        <li><a href="#addpaciente">CADASTRAR PACIENTE</a></li>
+        <li><a href="#addprescricao">ADICIONAR PRESCRICAO</a></li>
+        <li><a href="#perfil">ALTERAR PERFIL</a></li>
         <li><a href="#login">SAIR</a></li>
       </ul>
     </div>
@@ -40,7 +41,7 @@
 
 
 <!-- Container (Contact Section) -->
-<div id="contact" class="container">
+<div id="addpaciente" class="container">
   <h1 class="text-center">Cadastrar Paciente</h1>
 
   <div class="row">
@@ -79,7 +80,10 @@
           </div>
           <div class="col-sm-2 form-group">
             <input class="form-control" id="estado" name="estado" placeholder="Estado" type="Estado" required>
-          </div> 
+          </div>
+          <div class="col-sm-4 form-group">
+            <input class="form-control" id="telefone" name="telefone" placeholder="Telefone" type="text" required>
+          </div>  
       </div>
       <div class="row">
         <div class="col-md-12 form-group">
@@ -121,6 +125,42 @@
   </tbody>
   </table>
 </div>
+<div id="addprescricao" class="container">
+  <h1 class="text-center">Adicionar Prescrição</h1>
+
+  <div class="row">
+    <div class="col-md-4">
+      <p>Fan? Drop a note.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
+      <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
+      <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+    </div>
+
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="nomepaciente" name="nomepaciente" placeholder="Nome Paciente" type="text" required>
+        </div>
+          <div class="col-sm-6 form-group">
+            <input class="form-control" id="crm" name="crm" placeholder="CRM Medico" type="text" required>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <textarea class="form-control" rows="5" id="descricao" placeholder="Descrição"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 form-group">
+          <button class="btn pull-right" type="submit">Adicionar</button>
+        </div>
+        <div class="col-md-12 form-group">
+          <button class="btn pull-right" type="submit">Buscar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div id="perfil" class="container">
 <h1 class="text-center">Alterar Informações</h1>
@@ -161,6 +201,9 @@
           </div>
           <div class="col-sm-2 form-group">
             <input class="form-control" id="estado" name="estado" placeholder="Estado" type="text" required>
+          </div> 
+          <div class="col-sm-4 form-group">
+            <input class="form-control" id="telefone" name="telefone" placeholder="Telefone" type="text" required>
           </div> 
       </div>
       <div class="row">
