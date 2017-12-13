@@ -108,6 +108,7 @@
       color: #555;
   }
   .btn {
+      margin: 3px;
       padding: 10px 20px;
       background-color: #3f3f3f;
       color: #fff;

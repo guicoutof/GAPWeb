@@ -40,7 +40,9 @@
 
 
 
-<!-- Container (Contact Section) -->
+<!-- PACIENTE -->
+
+
 <div id="addpaciente" class="container">
   <h1 class="text-center">Cadastrar Paciente</h1>
 
@@ -65,37 +67,42 @@
         <div class="col-sm-6 form-group">
             <input class="form-control" id="senha" name="senha" placeholder="Senha" type="Senha" required>
           </div>
-          <div class="col-sm-6 form-group">
-            <input class="form-control" id="cpf" name="cpf" placeholder="CPF" type="CPF" required>
-          </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-            <input class="form-control" id="endereco" name="endereco" placeholder="Endereco" type="Endereco" required>
-          </div> 
-      </div>
-      <div class="row">
         <div class="col-sm-6 form-group">
-            <input class="form-control" id="cidade" name="cidade" placeholder="Cidade" type="Cidade" required>
+            <input class="form-control" id="confsenha" name="confsenha" placeholder="Confirmar Senha" type="text" required>
           </div>
-          <div class="col-sm-2 form-group">
-            <input class="form-control" id="estado" name="estado" placeholder="Estado" type="Estado" required>
+      </div>
+      <div class="row">
+          <div class="col-sm-6 form-group">
+            <input class="form-control" id="cpf" name="cpf" placeholder="CPF" type="text" required>
           </div>
-          <div class="col-sm-4 form-group">
+          <div class="col-sm-6 form-group">
             <input class="form-control" id="telefone" name="telefone" placeholder="Telefone" type="text" required>
           </div>  
       </div>
       <div class="row">
+        <div class="col-sm-12 form-group">
+            <input class="form-control" id="endereco" name="endereco" placeholder="Endereco" type="text" required>
+          </div> 
+      </div>
+      <div class="row">
+        <div class="col-sm-6 form-group">
+            <input class="form-control" id="cidade" name="cidade" placeholder="Cidade" type="text" required>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input class="form-control" id="estado" name="estado" placeholder="Estado" type="text" required>
+          </div>
+      </div>
+      <div class="row">
         <div class="col-md-12 form-group">
           <button class="btn pull-right" type="submit">Adicionar</button>
-        </div>
-        <div class="col-md-12 form-group">
           <button class="btn pull-right" type="submit">Buscar</button>
         </div>
       </div>
     </div>
   </div>
   <br>
+
+<!-- TABELA -->
 
   <table class="table table-striped">
   <thead>
@@ -128,6 +135,9 @@
   </tbody>
   </table>
 </div>
+
+<!-- PRESCRIÇÃO -->
+
 <div id="addprescricao" class="container">
   <h1 class="text-center">Adicionar Prescrição</h1>
 
@@ -154,13 +164,61 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-10 form-group">
+        <div class="col-md-12 form-group">
           <button class="btn pull-right" type="submit">Adicionar</button>
+          <button class="btn pull-right" type="submit">Buscar</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- RECEITA -->
+
+<div id="receita" class="container">
+<h1 class="text-center">Adicionar Receita</h1>
+
+  <div class="row">
+    <div class="col-md-4">
+      <p>Fan? Drop a note.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
+      <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
+      <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+    </div>
+
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <input class="form-control" id="medicamento" name="medicamento" placeholder="Medicamento" type="text" required>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-sm-4 form-group">
+          <input class="form-control" id="qtdpordia" name="qtdpordia" placeholder="Quantidade x por dia" type="number" required>
+        </div>
+        <div class="col-sm-4 form-group">
+            <input class="form-control" id="qtdprazo" name="qtdprazo" placeholder="Quantidade de dias" type="number" required>
+          </div>
+
+      </div>
+      <div class="row">
+          <div class="col-sm-12 form-group">
+            <textarea class="form-control" rows="5" id="anotacao" placeholder="Anotação"></textarea>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <button class="btn pull-right" type="submit">Adicionar</button>
+          <button class="btn pull-right" type="submit">Alterar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+
+<!-- PERFIL MEDICO -->
 
 <div id="perfil" class="container">
 <h1 class="text-center">Alterar Informações</h1>
@@ -179,16 +237,24 @@
           <input class="form-control" id="nome" name="nome" placeholder="Nome" type="text" required>
         </div>
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="text" required>
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6 form-group">
-            <input class="form-control" id="senha" name="senha" placeholder="Senha" type="text" required>
+            <input class="form-control" id="senha" name="senha" placeholder="Senha" type="Senha" required>
+          </div>
+        <div class="col-sm-6 form-group">
+            <input class="form-control" id="confsenha" name="confsenha" placeholder="Confirmar Senha" type="text" required>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-6 form-group">
+            <input class="form-control" id="cpf" name="cpf" placeholder="CPF" type="text" required>
           </div>
           <div class="col-sm-6 form-group">
-            <input class="form-control" id="crm" name="crm" placeholder="CRM" type="text" required>
-          </div>
+            <input class="form-control" id="telefone" name="telefone" placeholder="Telefone" type="text" required>
+          </div>  
       </div>
       <div class="row">
         <div class="col-sm-12 form-group">
@@ -201,22 +267,16 @@
           </div>
           <div class="col-sm-2 form-group">
             <input class="form-control" id="estado" name="estado" placeholder="Estado" type="text" required>
-          </div> 
-          <div class="col-sm-4 form-group">
-            <input class="form-control" id="telefone" name="telefone" placeholder="Telefone" type="text" required>
-          </div> 
+          </div>
       </div>
       <div class="row">
         <div class="col-md-12 form-group">
-          <button class="btn pull-right" type="submit">Adicionar</button>
+          <button class="btn pull-right" type="submit">Alterar</button>
         </div>
       </div>
     </div>
   </div>
   <br>
-
-
-
 </div>
 
 
