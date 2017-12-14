@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="assets/css/style.css"  type="text/css">
+  <link rel="stylesheet" href="<?= base_url("assets/css/style.css")?>"  type="text/css">
 
 
 
@@ -34,7 +34,7 @@
         <li><a href="#myPage">INICIO</a></li>
         <li><a href="#about">SOBRE</a></li>
         <li><a href="#contact">CONTATO</a></li>
-        <li><a href="#login">ENTRAR</a></li>
+        <li><a href="<?php echo base_url('index.php/login') ?>">ENTRAR</a></li>
       </ul>
     </div>
   </div>

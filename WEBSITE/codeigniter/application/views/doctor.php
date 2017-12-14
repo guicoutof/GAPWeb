@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="css/doctorstyle.css"  type="text/css">
+  <link rel="stylesheet" href="<?= base_url("assets/css/doctorstyle.css")?>"  type="text/css">
 </head>
 
 
@@ -57,39 +57,39 @@
     <div class="col-md-8">
       <div class="row">
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="nome" name="nome" placeholder="Nome" type="text" required>
+          <input class="form-control" id="pacientenome" name="pacientenome" placeholder="Nome" type="text" required>
         </div>
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+          <input class="form-control" id="pacienteemail" name="pacienteemail" placeholder="Email" type="text" required>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6 form-group">
-            <input class="form-control" id="senha" name="senha" placeholder="Senha" type="Senha" required>
+            <input class="form-control" id="pacientesenha" name="pacientesenha" placeholder="Senha" type="text" required>
           </div>
         <div class="col-sm-6 form-group">
-            <input class="form-control" id="confsenha" name="confsenha" placeholder="Confirmar Senha" type="text" required>
+            <input class="form-control" id="pacienteconfsenha" name="pacienteconfsenha" placeholder="Confirmar Senha" type="text" required>
           </div>
       </div>
       <div class="row">
           <div class="col-sm-6 form-group">
-            <input class="form-control" id="cpf" name="cpf" placeholder="CPF" type="text" required>
+            <input class="form-control" id="pacientecpf" name="pacientecpf" placeholder="CPF" type="text" required>
           </div>
           <div class="col-sm-6 form-group">
-            <input class="form-control" id="telefone" name="telefone" placeholder="Telefone" type="text" required>
+            <input class="form-control" id="pacientetelefone" name="pacientetelefone" placeholder="Telefone" type="text" required>
           </div>  
       </div>
       <div class="row">
         <div class="col-sm-12 form-group">
-            <input class="form-control" id="endereco" name="endereco" placeholder="Endereco" type="text" required>
+            <input class="form-control" id="pacienteendereco" name="pacienteendereco" placeholder="Endereco" type="text" required>
           </div> 
       </div>
       <div class="row">
         <div class="col-sm-6 form-group">
-            <input class="form-control" id="cidade" name="cidade" placeholder="Cidade" type="text" required>
+            <input class="form-control" id="pacientecidade" name="pacientecidade" placeholder="Cidade" type="text" required>
           </div>
           <div class="col-sm-2 form-group">
-            <input class="form-control" id="estado" name="estado" placeholder="Estado" type="text" required>
+            <input class="form-control" id="pacienteestado" name="pacienteestado" placeholder="Estado" type="text" required>
           </div>
       </div>
       <div class="row">
@@ -152,15 +152,15 @@
     <div class="col-md-8">
       <div class="row">
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="nomepaciente" name="nomepaciente" placeholder="Nome Paciente" type="text" required>
+          <input class="form-control" id="prescricaonome" name="prescricaonome" placeholder="Nome Paciente" type="text" required>
         </div>
           <div class="col-sm-6 form-group">
-            <input class="form-control" id="crm" name="crm" placeholder="CRM Medico" type="text" required>
+            <input class="form-control" id="prescricaocrm" name="prescricaocrm" placeholder="CRM Medico" type="text" required>
           </div>
       </div>
       <div class="row">
         <div class="col-sm-12 form-group">
-          <textarea class="form-control" rows="5" id="descricao" placeholder="Descrição"></textarea>
+          <textarea class="form-control" rows="5" id="prescricaodescricao" placeholder="Descrição"></textarea>
         </div>
       </div>
       <div class="row">
@@ -234,39 +234,39 @@
     <div class="col-md-8">
       <div class="row">
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="nome" name="nome" placeholder="Nome" type="text" required>
+          <input class="form-control" id="mediconome" name="mediconome" placeholder="Nome" type="text" required>
         </div>
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+          <input class="form-control" id="medicoemail" name="medicoemail" placeholder="Email" type="text" required>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6 form-group">
-            <input class="form-control" id="senha" name="senha" placeholder="Senha" type="Senha" required>
+            <input class="form-control" id="medicosenha" name="medicosenha" placeholder="Senha" type="text" required>
           </div>
         <div class="col-sm-6 form-group">
-            <input class="form-control" id="confsenha" name="confsenha" placeholder="Confirmar Senha" type="text" required>
+            <input class="form-control" id="medicoconfsenha" name="medicoconfsenha" placeholder="Confirmar Senha" type="text" required>
           </div>
       </div>
       <div class="row">
           <div class="col-sm-6 form-group">
-            <input class="form-control" id="cpf" name="cpf" placeholder="CPF" type="text" required>
+            <input class="form-control" id="medicocpf" name="medicocpf" placeholder="CPF" type="text" required>
           </div>
           <div class="col-sm-6 form-group">
-            <input class="form-control" id="telefone" name="telefone" placeholder="Telefone" type="text" required>
+            <input class="form-control" id="medicotelefone" name="medicotelefone" placeholder="Telefone" type="text" required>
           </div>  
       </div>
       <div class="row">
         <div class="col-sm-12 form-group">
-            <input class="form-control" id="endereco" name="endereco" placeholder="Endereco" type="text" required>
+            <input class="form-control" id="medicoendereco" name="medicoendereco" placeholder="Endereco" type="text" required>
           </div> 
       </div>
       <div class="row">
         <div class="col-sm-6 form-group">
-            <input class="form-control" id="cidade" name="cidade" placeholder="Cidade" type="text" required>
+            <input class="form-control" id="medicocidade" name="medicocidade" placeholder="Cidade" type="text" required>
           </div>
           <div class="col-sm-2 form-group">
-            <input class="form-control" id="estado" name="estado" placeholder="Estado" type="text" required>
+            <input class="form-control" id="medicoestado" name="medicoestado" placeholder="Estado" type="text" required>
           </div>
       </div>
       <div class="row">
