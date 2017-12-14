@@ -17,6 +17,12 @@
       font-size: 30px;
       color: #3f3f3f;
   }
+
+  label {
+      margin-right: 20px;      
+      font-size: 16px;
+      color: #777;
+  }
   .container {
       padding: 80px 100px;
 

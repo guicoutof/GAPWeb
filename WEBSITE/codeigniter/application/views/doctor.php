@@ -132,6 +132,10 @@
               </div>
             </div>
             <div class="row">
+              <label class="control-label col-sm-4">Selecione a Prescrição</label>
+              <input id="input-b5" name="input-b5[]" type="file" multiple>
+            </div>
+            <div class="row">
               <div class="col-md-12 form-group">
                 <button class="btn pull-right" type="submit">Adicionar</button>
                 <button class="btn pull-right" type="submit">Buscar</button>
@@ -326,10 +330,14 @@ $(document).ready(function(){
     } // End if
   });
 })
-
+  // TABS
   $('#myNavbar a[href="#home"]').tab('show');
   $('#myNavbar a[href="#prescrition"]').tab('show');
   $('#myNavbar a[href="#profile"]').tab('show');
+
+  //ARQUIVO
+  $(document).on('ready', function() {
+    $("#input-b5").fileinput({showCaption: false});
 </script>
 
 </body>
