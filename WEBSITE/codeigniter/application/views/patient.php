@@ -27,11 +27,11 @@
       </button>
       <a class="navbar-brand" href="#myPage">Logo</a>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#myPage">PRESCRICAO</a></li>
-        <li><a href="#contact">PERFIL</a></li>
-        <li><a href="#login">SAIR</a></li>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right" id="myNavbar">
+        <li><a href="#home" aria-controls="home" role="tab" data-toggle="tab">PRESCRICAO</a></li>
+        <li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">PERFIL</a></li>
+        <li><a href="#logout">SAIR</a></li>
       </ul>
     </div>
   </div>
@@ -40,139 +40,142 @@
 
 
 <!-- Container (Contact Section) -->
-<div id="contact" class="container">
-  <h1 class="text-center">PRESCRICAO</h1>
+<div class="container">
 
-  <div class="row">
-    <div class="col-md-4">
-      <p>Fan? Drop a note.</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
-      <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
-      <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
-    </div>
-
-    <div class="col-md-8">
+  <div class="tab-content">
+    <!-- TAB 1 HOME -->
+    <div role="tabpanel" class="tab-pane active" id="home">
+      <h1 class="text-center">PRESCRICAO</h1>
       <div class="row">
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="nome" name="nome" placeholder="Nome" type="text" required>
+        <div class="col-md-4">
+          <p>Fan? Drop a note.</p>
+          <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
+          <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
+          <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
         </div>
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 form-group">
-            <input class="form-control" id="senha" name="senha" placeholder="Senha" type="Senha" required>
+
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="nome" name="nome" placeholder="Nome" type="text" required>
+            </div>
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+            </div>
           </div>
-          <div class="col-sm-6 form-group">
-            <input class="form-control" id="cpf" name="cpf" placeholder="CPF" type="CPF" required>
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="senha" name="senha" placeholder="Senha" type="Senha" required>
+            </div>
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="cpf" name="cpf" placeholder="CPF" type="CPF" required>
+            </div>
           </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-            <input class="form-control" id="endereco" name="endereco" placeholder="Endereco" type="Endereco" required>
-          </div> 
-      </div>
-      <div class="row">
-        <div class="col-sm-6 form-group">
-            <input class="form-control" id="cidade" name="cidade" placeholder="Cidade" type="Cidade" required>
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <input class="form-control" id="endereco" name="endereco" placeholder="Endereco" type="Endereco" required>
+            </div> 
           </div>
-          <div class="col-sm-2 form-group">
-            <input class="form-control" id="estado" name="estado" placeholder="Estado" type="Estado" required>
-          </div> 
-      </div>
-
-    </div>
-  </div>
-  <br>
-
-  <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-  </table>
-</div>
-
-<div id="perfil" class="container">
-<h1 class="text-center">Alterar Informações</h1>
-
-  <div class="row">
-    <div class="col-md-4">
-      <p>Fan? Drop a note.</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
-      <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
-      <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
-    </div>
-
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="nome" name="nome" placeholder="Nome" type="text" required>
-        </div>
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 form-group">
-            <input class="form-control" id="senha" name="senha" placeholder="Senha" type="Senha" required>
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="cidade" name="cidade" placeholder="Cidade" type="Cidade" required>
+            </div>
+            <div class="col-sm-2 form-group">
+              <input class="form-control" id="estado" name="estado" placeholder="Estado" type="Estado" required>
+            </div> 
           </div>
-          <div class="col-sm-6 form-group">
-            <input class="form-control" id="cpf" name="cpf" placeholder="CPF" type="CPF" required>
+        </div><!-- cold 8 -->
+      </div><!-- row -->
+      <br>
+
+        <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+        </table>
+      </div><!-- tab -->
+
+
+
+    <!--  TAB 2 PROFILE-->
+  <div role="tabpanel" class="tab-pane" id="profile">
+      <h1 class="text-center">Alterar Informações</h1>
+
+        <div class="row">
+          <div class="col-md-4">
+            <p>Fan? Drop a note.</p>
+            <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
+            <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
+            <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
           </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-            <input class="form-control" id="endereco" name="endereco" placeholder="Endereco" type="Endereco" required>
-          </div> 
-      </div>
-      <div class="row">
-        <div class="col-sm-6 form-group">
-            <input class="form-control" id="cidade" name="cidade" placeholder="Cidade" type="Cidade" required>
-          </div>
-          <div class="col-sm-2 form-group">
-            <input class="form-control" id="estado" name="estado" placeholder="Estado" type="Estado" required>
-          </div> 
-      </div>
-      <div class="row">
-        <div class="col-md-12 form-group">
-          <button class="btn pull-right" type="submit">Salvar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
 
-
-
-</div>
-
-
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-sm-6 form-group">
+                <input class="form-control" id="nome" name="nome" placeholder="Nome" type="text" required>
+              </div>
+              <div class="col-sm-6 form-group">
+                <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 form-group">
+                <input class="form-control" id="senha" name="senha" placeholder="Senha" type="Senha" required>
+              </div>
+              <div class="col-sm-6 form-group">
+                <input class="form-control" id="cpf" name="cpf" placeholder="CPF" type="CPF" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+                <input class="form-control" id="endereco" name="endereco" placeholder="Endereco" type="Endereco" required>
+              </div> 
+            </div>
+            <div class="row">
+              <div class="col-sm-6 form-group">
+                <input class="form-control" id="cidade" name="cidade" placeholder="Cidade" type="Cidade" required>
+              </div>
+              <div class="col-sm-2 form-group">
+                <input class="form-control" id="estado" name="estado" placeholder="Estado" type="Estado" required>
+              </div> 
+            </div>
+            <div class="row">
+              <div class="col-md-12 form-group">
+                <button class="btn pull-right" type="submit">Salvar</button>
+              </div> <!-- form --><!-- group -->
+            </div><!-- row -->
+          </div>  <!-- cold m 8 -->
+        </div><!-- row -->
+        <br> 
+    </div><!--  tab 2 -->
+  </div><!-- tab geral -->
+</div> <!-- container -->
+  
 
 <!-- Footer -->
 <footer class="text-center">
@@ -183,7 +186,7 @@
 
 <script>
 $(document).ready(function(){
-  // Initialize Tooltip
+  Initialize Tooltip
   $('[data-toggle="tooltip"]').tooltip(); 
   
   // Add smooth scrolling to all links in navbar + footer link
@@ -209,7 +212,12 @@ $(document).ready(function(){
       });
     } // End if
   });
-})
+});
+
+
+  $('#myNavbar a[href="#home"]').tab('show');
+  $('#myNavbar a[href="#profile"]').tab('show');
+
 </script>
 
 </body>
