@@ -31,7 +31,7 @@
       <ul class="nav navbar-nav navbar-right" id="myNavbar">
         <li><a href="#home" aria-controls="home" role="tab" data-toggle="tab">PRESCRICAO</a></li>
         <li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">PERFIL</a></li>
-        <li><a href="#logout">SAIR</a></li>
+        <li><a href="<?php echo base_url('index.php/Logout') ?>">SAIR</a></li>
       </ul>
     </div>
   </div>
@@ -48,10 +48,7 @@
       <h1 class="text-center">PRESCRICAO</h1>
       <div class="row">
         <div class="col-md-4">
-          <p>Fan? Drop a note.</p>
-          <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
-          <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
-          <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+          <span class="glyphicon glyphicon-edit"></span>
         </div>
 
         <div class="col-md-8">
@@ -128,10 +125,7 @@
 
         <div class="row">
           <div class="col-md-4">
-            <p>Fan? Drop a note.</p>
-            <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
-            <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
-            <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+            <span class="glyphicon glyphicon-cog"></span>
           </div>
 
           <div class="col-md-8">

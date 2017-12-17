@@ -23,6 +23,11 @@
       font-size: 16px;
       color: #777;
   }
+
+  .row span {
+    font-size: 100px;
+
+  }
   .container {
       padding: 80px 100px;
 

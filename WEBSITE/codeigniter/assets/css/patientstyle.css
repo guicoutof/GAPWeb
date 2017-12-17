@@ -17,6 +17,11 @@
       font-size: 30px;
       color: #3f3f3f;
   }
+
+  .row span {
+    font-size: 100px;
+
+  }
   .container {
       padding: 80px 100px;
 

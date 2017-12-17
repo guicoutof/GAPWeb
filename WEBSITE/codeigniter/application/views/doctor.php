@@ -32,7 +32,7 @@
         <li><a href="#home" aria-controls="home" role="tab" data-toggle="tab">CADASTRAR PACIENTE</a></li>
         <li><a href="#prescrition" aria-controls="prescrition" role="tab" data-toggle="tab">ADICIONAR PRESCRICAO</a></li>
         <li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">ALTERAR PERFIL</a></li>
-        <li><a href="#login">SAIR</a></li>
+        <li><a href="<?php echo base_url('index.php/Logout') ?>">SAIR</a></li>
       </ul>
     </div>
   </div>
@@ -49,27 +49,24 @@
 
         <div class="row">
           <div class="col-md-4">
-            <p>Fan? Drop a note.</p>
-            <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
-            <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
-            <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+            <span class="glyphicon glyphicon-user"></span>
           </div>
-
+          <form  method="post" action="<?= base_url()?>Patients/adicionar">
           <div class="col-md-8">
             <div class="row">
               <div class="col-sm-6 form-group">
                 <input class="form-control" id="pacientenome" name="pacientenome" placeholder="Nome" type="text" required>
               </div>
               <div class="col-sm-6 form-group">
-                <input class="form-control" id="pacienteemail" name="pacienteemail" placeholder="Email" type="text" required>
+                <input class="form-control" id="pacienteemail" name="pacienteemail" placeholder="Email" type="email" required>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-6 form-group">
-                  <input class="form-control" id="pacientesenha" name="pacientesenha" placeholder="Senha" type="text" required>
+                  <input class="form-control" id="pacientesenha" name="pacientesenha" placeholder="Senha" type="password" required>
                 </div>
               <div class="col-sm-6 form-group">
-                  <input class="form-control" id="pacienteconfsenha" name="pacienteconfsenha" placeholder="Confirmar Senha" type="text" required>
+                  <input class="form-control" id="pacienteconfsenha" name="pacienteconfsenha" placeholder="Confirmar Senha" type="password" required>
                 </div>
             </div>
             <div class="row">
@@ -92,6 +89,9 @@
                 <div class="col-sm-2 form-group">
                   <input class="form-control" id="pacienteestado" name="pacienteestado" placeholder="Estado" type="text" required>
                 </div>
+                <div class="col-sm-4 form-group">
+                  <input class="form-control" id="pacientepais" name="pacientepais" placeholder="Pais" type="text" required>
+                </div>
             </div>
             <div class="row">
               <div class="col-md-12 form-group">
@@ -99,6 +99,7 @@
               </div>
             </div>
           </div>
+        </form>
         </div>
         <br>
       </div>
@@ -111,10 +112,7 @@
 
         <div class="row">
           <div class="col-md-4">
-            <p>Fan? Drop a note.</p>
-            <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
-            <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
-            <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+            <span class="glyphicon glyphicon-edit"></span>
           </div>
 
           <div class="col-md-8">
@@ -186,10 +184,7 @@
 
         <div class="row">
           <div class="col-md-4">
-            <p>Fan? Drop a note.</p>
-            <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
-            <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
-            <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+            <span class="glyphicon glyphicon-adjust"></span>
           </div>
 
           <div class="col-md-8">
@@ -234,10 +229,7 @@
 
         <div class="row">
           <div class="col-md-4">
-            <p>Fan? Drop a note.</p>
-            <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
-            <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
-            <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+            <span class="glyphicon glyphicon-cog"></span>
           </div>
 
           <div class="col-md-8">
