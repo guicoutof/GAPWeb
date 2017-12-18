@@ -30,4 +30,6 @@ class Patients extends CI_Controller{
 
     }
 
+
+
 }

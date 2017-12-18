@@ -114,32 +114,33 @@
           <div class="col-md-4">
             <span class="glyphicon glyphicon-edit"></span>
           </div>
-
-          <div class="col-md-8">
-            <div class="row">
-              <div class="col-sm-6 form-group">
-                <input class="form-control" id="prescricaonome" name="prescricaonome" placeholder="Nome Paciente" type="text" required>
-              </div>
+          <form  method="post" action="<?= base_url()?>Prescritions/adicionar">
+            <div class="col-md-8">
+              <div class="row">
                 <div class="col-sm-6 form-group">
-                  <input class="form-control" id="prescricaocrm" name="prescricaocrm" placeholder="CRM Medico" type="text" required>
+                  <input class="form-control" id="prescricaocpf" name="prescricaocpf" placeholder="CPF Paciente" type="text" required>
                 </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12 form-group">
-                <textarea class="form-control" rows="5" id="prescricaodescricao" placeholder="Descrição"></textarea>
+                  <div class="col-sm-6 form-group">
+                    <input class="form-control" id="prescricaocrm" name="prescricaocrm" placeholder="CRM Medico" type="text" required>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 form-group">
+                  <textarea class="form-control" rows="5" id="prescricaodescricao" name="prescricaodescricao" placeholder="Descrição"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <label class="control-label col-sm-4">Selecione a Prescrição</label>
+                <input id="input-b5" name="input-b5[]" type="file" multiple>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <button class="btn pull-right" type="submit">Adicionar</button>
+                  <button class="btn pull-right" type="submit">Buscar</button>
+                </div>
               </div>
             </div>
-            <div class="row">
-              <label class="control-label col-sm-4">Selecione a Prescrição</label>
-              <input id="input-b5" name="input-b5[]" type="file" multiple>
-            </div>
-            <div class="row">
-              <div class="col-md-12 form-group">
-                <button class="btn pull-right" type="submit">Adicionar</button>
-                <button class="btn pull-right" type="submit">Buscar</button>
-              </div>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
 
