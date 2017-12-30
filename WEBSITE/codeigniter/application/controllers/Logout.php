@@ -4,10 +4,7 @@ class Logout extends CI_Controller{ // criação da classe Login
  
     public function index(){
  
-        
-
-
-
+    	session_destroy();
         $this->load->view('index');
  
 

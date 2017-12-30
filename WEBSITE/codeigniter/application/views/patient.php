@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <link rel="icon" href="assets/img/heart.png" type="image/gif" sizes="16x16">
+  <link rel="icon" href="<?= base_url("assets/img/heart.png")?>" type="image/gif" sizes="16x16">
   <title>GAP Med</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +11,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="<?= base_url("assets/css/patientstyle.css")?>"  type="text/css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.16/af-2.2.2/r-2.2.1/datatables.min.css"/> 
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/af-2.2.2/r-2.2.1/datatables.min.js"></script>
+
 </head>
 
 
@@ -25,7 +27,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">Logo</a>
+      <a class="navbar-brand" href="#myPage">GM</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right" id="myNavbar">
@@ -40,58 +42,46 @@
 
 
 <!-- Container (Contact Section) -->
-<div class="container">
 
   <div class="tab-content">
     <!-- TAB 1 HOME -->
+
     <div role="tabpanel" class="tab-pane active" id="home">
+      <div class="container">
       <h1 class="text-center">PRESCRICAO</h1>
       <div class="row">
-        <div class="col-md-4">
-          <span class="glyphicon glyphicon-edit"></span>
-        </div>
-
-        <div class="col-md-8">
-          <div class="row">
-            <div class="col-sm-6 form-group">
-              <input class="form-control" id="nome" name="nome" placeholder="Nome" type="text" required>
-            </div>
-            <div class="col-sm-6 form-group">
-              <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-            </div>
+          <div class="col-md-4">
+            <span class="glyphicon glyphicon-edit"></span>
           </div>
-          <div class="row">
-            <div class="col-sm-6 form-group">
-              <input class="form-control" id="senha" name="senha" placeholder="Senha" type="Senha" required>
+          <form  method="post" action="<?= base_url()?>Prescritions/buscar">
+            <div class="col-md-8">
+              <div class="row">
+                <div class="col-sm-6 form-group">
+                  <input class="form-control" id="prescricaocpf" name="prescricaocpf" placeholder="CPF Paciente" type="text" required>
+                </div>
+                  <div class="col-sm-6 form-group">
+                    <input class="form-control" id="prescricaocrm" name="prescricaocrm" placeholder="CRM Medico" type="text" required>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 form-group">
+                  <textarea class="form-control" rows="5" id="prescricaodescricao" name="prescricaodescricao" placeholder="Descrição"></textarea>
+                </div>
+              </div>
             </div>
-            <div class="col-sm-6 form-group">
-              <input class="form-control" id="cpf" name="cpf" placeholder="CPF" type="CPF" required>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12 form-group">
-              <input class="form-control" id="endereco" name="endereco" placeholder="Endereco" type="Endereco" required>
-            </div> 
-          </div>
-          <div class="row">
-            <div class="col-sm-6 form-group">
-              <input class="form-control" id="cidade" name="cidade" placeholder="Cidade" type="Cidade" required>
-            </div>
-            <div class="col-sm-2 form-group">
-              <input class="form-control" id="estado" name="estado" placeholder="Estado" type="Estado" required>
-            </div> 
-          </div>
-        </div><!-- cold 8 -->
-      </div><!-- row -->
+          </form>
+        </div><!-- row -->
       <br>
+    
 
-        <table class="table table-striped">
+        <table id="tabela2" class="table table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Username</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">ID_Medico</th>
+            <th scope="col">ID_Paciente</th>
+            <th scope="col">Anexo</th>
           </tr>
         </thead>
         <tbody>
@@ -100,27 +90,63 @@
             <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>
+            <td>@mdo</td>
           </tr>
           <tr>
             <th scope="row">2</th>
             <td>Jacob</td>
             <td>Thornton</td>
             <td>@fat</td>
+            <td>@mdo</td>
           </tr>
           <tr>
             <th scope="row">3</th>
             <td>Larry</td>
             <td>the Bird</td>
-            <td>@twitter</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
           </tr>
         </tbody>
         </table>
-      </div><!-- tab -->
 
+        <div class="row">
+          <div class="col-md-4">
+            <span class="glyphicon glyphicon-adjust"></span>
+          </div>
+
+          <div class="col-md-8">
+            <form  method="post" action="<?= base_url()?>Recipe/adicionar">
+              <div class="row">
+                <div class="col-sm-12 form-group">
+                  <input class="form-control" id="medicamento" name="medicamento" placeholder="Medicamento" type="text" required>
+                </div>
+                
+              </div>
+              <div class="row">
+                <div class="col-sm-4 form-group">
+                  <input class="form-control" id="qtdpordia" name="qtdpordia" placeholder="Quantidade x por dia" type="number" required>
+                </div>
+                <div class="col-sm-4 form-group">
+                    <input class="form-control" id="qtdprazo" name="qtdprazo" placeholder="Quantidade de dias" type="number" required>
+                  </div>
+
+              </div>
+              <div class="row">
+                  <div class="col-sm-12 form-group">
+                    <textarea class="form-control" rows="5" id="anotacao" placeholder="Anotação"></textarea>
+                  </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <br>
+      </div>
+      </div><!-- tab -->
 
 
     <!--  TAB 2 PROFILE-->
   <div role="tabpanel" class="tab-pane" id="profile">
+      <div class="container">
       <h1 class="text-center">Alterar Informações</h1>
 
         <div class="row">
@@ -139,23 +165,31 @@
             </div>
             <div class="row">
               <div class="col-sm-6 form-group">
-                <input class="form-control" id="senha" name="senha" placeholder="Senha" type="Senha" required>
+                <input class="form-control" id="senha" name="senha" placeholder="Senha" type="password" required>
               </div>
               <div class="col-sm-6 form-group">
-                <input class="form-control" id="cpf" name="cpf" placeholder="CPF" type="CPF" required>
+                  <input class="form-control" id="confsenha" name="confsenha" placeholder="Confirmar Senha" type="password" required>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 form-group">
+                <input class="form-control" id="cpf" name="cpf" placeholder="CPF" type="text" required>
               </div>
+              <div class="col-sm-6 form-group">
+                  <input class="form-control" id="pacientetelefone" name="pacientetelefone" placeholder="Telefone" type="text" required>
+                </div>  
             </div>
             <div class="row">
               <div class="col-sm-12 form-group">
-                <input class="form-control" id="endereco" name="endereco" placeholder="Endereco" type="Endereco" required>
+                <input class="form-control" id="endereco" name="endereco" placeholder="Endereco" type="text" required>
               </div> 
             </div>
             <div class="row">
               <div class="col-sm-6 form-group">
-                <input class="form-control" id="cidade" name="cidade" placeholder="Cidade" type="Cidade" required>
+                <input class="form-control" id="cidade" name="cidade" placeholder="Cidade" type="text" required>
               </div>
               <div class="col-sm-2 form-group">
-                <input class="form-control" id="estado" name="estado" placeholder="Estado" type="Estado" required>
+                <input class="form-control" id="estado" name="estado" placeholder="Estado" type="text" required>
               </div> 
             </div>
             <div class="row">
@@ -166,9 +200,10 @@
           </div>  <!-- cold m 8 -->
         </div><!-- row -->
         <br> 
+      </div>
     </div><!--  tab 2 -->
   </div><!-- tab geral -->
-</div> <!-- container -->
+ <!-- container -->
   
 
 <!-- Footer -->
@@ -211,6 +246,11 @@ $(document).ready(function(){
 
   $('#myNavbar a[href="#home"]').tab('show');
   $('#myNavbar a[href="#profile"]').tab('show');
+
+
+$(document).ready(function() {
+    $('#tabela2').DataTable();
+} );
 
 </script>
 

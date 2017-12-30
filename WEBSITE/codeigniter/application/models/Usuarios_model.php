@@ -1,20 +1,20 @@
 <?php
 class Usuarios_model extends CI_Model{
     public function buscaPorEmailSenha($email, $senha){
-        $this->db->where("Login", $email);
+        $this->db->where("med_email", $email);
 
-        $this->db->where("Senha", $senha);
+        $this->db->where("med_senha", $senha);
 
-        $usuario = $this->db->get("Medicos")->row_array();
+        $usuario = $this->db->get("medico")->row_array();
 
         $tipo = "medico";
         if (is_null($usuario)){
         	$tipo = "paciente";
-        	$this->db->where("Login", $email);
+        	$this->db->where("pac_email", $email);
 
-        	$this->db->where("Senha", $senha);
+        	$this->db->where("pac_senha", $senha);
 
-        	$usuario = $this->db->get("Pacientes")->row_array();
+        	$usuario = $this->db->get("paciente")->row_array();
         }
 
 

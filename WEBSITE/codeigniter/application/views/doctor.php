@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <link rel="icon" href="assets/img/heart.png" type="image/gif" sizes="16x16">
+  <link rel="icon" href="<?= base_url("assets/img/heart.png")?>" type="image/gif" sizes="16x16">
   <title>GAP Med</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,8 +11,21 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="<?= base_url("assets/css/doctorstyle.css")?>"  type="text/css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.16/r-2.2.1/datatables.min.css"/> 
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/r-2.2.1/datatables.min.js"></script>
+
 </head>
 
+<!--
+FAZER TRIGER PARA QUANDO ALTERAR CPF DE UM MEDICO OU PACIENTE, ALTERAR NA CONSULTA TAMBÉM
+
+
+
+
+
+
+
+-->
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 
@@ -25,27 +37,70 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">Logo</a>
+      <a class="navbar-brand" href="#myPage">GM</a>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#home" aria-controls="home" role="tab" data-toggle="tab">CADASTRAR PACIENTE</a></li>
-        <li><a href="#prescrition" aria-controls="prescrition" role="tab" data-toggle="tab">ADICIONAR PRESCRICAO</a></li>
-        <li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">ALTERAR PERFIL</a></li>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right" id="myNavbar">
+        <li><a href="#home" aria-controls="home" role="tab" data-toggle="tab">PACIENTE</a></li>
+        <li><a href="#prescrition" aria-controls="prescrition" role="tab" data-toggle="tab">CONSULTA</a></li>
+        <li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">PERFIL</a></li>
         <li><a href="<?php echo base_url('index.php/Logout') ?>">SAIR</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
+<h3><?php echo $this->session->flashdata('senha');?></h3>
+
+
 
 
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="home">
     
+
+
+
+
+          <div class="container">
+        <h1 class="text-center">Pacientes</h1>
       <!-- PACIENTE -->
-      <div class="container">
-        <h1 class="text-center">Cadastrar Paciente</h1>
+
+
+          <table id="pacientes" class="table table-hover">
+            <thead>
+              <tr>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Endereco</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>Pais</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <?php
+
+              foreach($pacientes as $paciente){
+                echo "<tr>";
+                echo "<td>".$paciente->pac_CPF."</td>";
+                echo "<td>".$paciente->pac_nome."</td>";
+                echo "<td>".$paciente->pac_email."</td>";
+                echo "<td>".$paciente->pac_telefone."</td>";
+                echo "<td>".$paciente->pac_endereco."</td>";
+                echo "<td>".$paciente->pac_cidade."</td>";
+                echo "<td>".$paciente->pac_estado."</td>";
+                echo "<td>".$paciente->pac_pais."</td>";
+              }
+              ?>
+      </tbody>
+    </table>
+    <h1 class="text-center">Cadastrar Paciente</h1>
+
+
 
         <div class="row">
           <div class="col-md-4">
@@ -87,10 +142,10 @@
                   <input class="form-control" id="pacientecidade" name="pacientecidade" placeholder="Cidade" type="text" required>
                 </div>
                 <div class="col-sm-2 form-group">
-                  <input class="form-control" id="pacienteestado" name="pacienteestado" placeholder="Estado" type="text" required>
+                  <input class="form-control" id="pacienteestado" name="pacienteestado" placeholder="Estado" type="text" maxlength="2" required>
                 </div>
                 <div class="col-sm-4 form-group">
-                  <input class="form-control" id="pacientepais" name="pacientepais" placeholder="Pais" type="text" required>
+                  <input class="form-control" id="pacientepais" name="pacientepais" placeholder="Pais" type="text" maxlength="3" required>
                 </div>
             </div>
             <div class="row">
@@ -102,130 +157,106 @@
         </form>
         </div>
         <br>
+
+
       </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="prescrition">
-
-      <!-- PRESCRIÇÃO -->
+      <!-- CONSULTA -->
       <div id="addprescricao" class="container">
-        <h1 class="text-center">Adicionar Prescrição</h1>
+        <h1 class="text-center">Consultas</h1>
+        <!-- TABELA -->
+        <div class="container-fluid">
+          <table id="tabela" class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Paciente</th>
+              <th scope="col">Medico</th>
+              <th scope="col">Mais</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+                foreach($consultas as $consulta){
+                  echo "<tr>";
+                  echo "<td>".$consulta->con_id."</td>";
+                  echo "<td>".$consulta->pac_CPF."</td>";
+                  echo "<td>".$consulta->med_CPF."</td>";
+                  if($consulta->med_CPF == $this->session->userdata['cpf']){
+                  echo "<td><a  href='".base_url('Consulta/index/'.$consulta->con_id)."' class='btn-info btn-sm'>Abrir Consulta</a></td>";
+                  }
 
+            }
+            ?>
+          </tbody>
+          </table>
+        </div>
+        <!-- ADICIONAR -->
+        <h1 class="text-center">Adocionar Consulta</h1>
         <div class="row">
           <div class="col-md-4">
             <span class="glyphicon glyphicon-edit"></span>
           </div>
-          <form  method="post" action="<?= base_url()?>Prescritions/adicionar">
+          <form  method="post" action="<?= base_url()?>Consulta/adicionar">
             <div class="col-md-8">
               <div class="row">
                 <div class="col-sm-6 form-group">
-                  <input class="form-control" id="prescricaocpf" name="prescricaocpf" placeholder="CPF Paciente" type="text" required>
+                  <input class="form-control" id="paccpf" name="paccpf" placeholder="CPF Paciente" type="text" required>
                 </div>
-                  <div class="col-sm-6 form-group">
-                    <input class="form-control" id="prescricaocrm" name="prescricaocrm" placeholder="CRM Medico" type="text" required>
-                  </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12 form-group">
-                  <textarea class="form-control" rows="5" id="prescricaodescricao" name="prescricaodescricao" placeholder="Descrição"></textarea>
-                </div>
-              </div>
-              <div class="row">
-                <label class="control-label col-sm-4">Selecione a Prescrição</label>
-                <input id="input-b5" name="input-b5[]" type="file" multiple>
-              </div>
-              <div class="row">
-                <div class="col-md-12 form-group">
+                <div class="col-md-6 form-group">
                   <button class="btn pull-right" type="submit">Adicionar</button>
-                  <button class="btn pull-right" type="submit">Buscar</button>
                 </div>
               </div>
             </div>
           </form>
         </div>
-      </div>
-
-      <!-- TABELA -->
-
-        <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Username</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-        </table>
 
 
-      <!-- RECEITA -->
-
-      <div id="receita" class="container">
-      <h1 class="text-center">Adicionar Receita</h1>
-
-        <div class="row">
-          <div class="col-md-4">
-            <span class="glyphicon glyphicon-adjust"></span>
-          </div>
-
-          <div class="col-md-8">
-            <div class="row">
-              <div class="col-sm-12 form-group">
-                <input class="form-control" id="medicamento" name="medicamento" placeholder="Medicamento" type="text" required>
-              </div>
-              
-            </div>
-            <div class="row">
-              <div class="col-sm-4 form-group">
-                <input class="form-control" id="qtdpordia" name="qtdpordia" placeholder="Quantidade x por dia" type="number" required>
-              </div>
-              <div class="col-sm-4 form-group">
-                  <input class="form-control" id="qtdprazo" name="qtdprazo" placeholder="Quantidade de dias" type="number" required>
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                  <textarea class="form-control" rows="5" id="anotacao" placeholder="Anotação"></textarea>
-                </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 form-group">
-                <button class="btn pull-right" type="submit">Adicionar</button>
-                <button class="btn pull-right" type="submit">Alterar</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br>
       </div>  
-
     </div>
-    <div role="tabpanel" class="tab-pane" id="profile">...
+
+    <div role="tabpanel" class="tab-pane" id="profile">
 
       <!-- PERFIL MEDICO -->
+        <div id="perfil" class="container">
+          <h1 class="text-center">Doutor</h1>
 
-      <div id="perfil" class="container">
+          <table id="medico" class="table table-hover table-inversed">
+            <thead >
+              <tr>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Endereco</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>Pais</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <?php
+
+              foreach($medico as $medico){
+                echo "<tr>";
+                echo "<td>".$medico->med_CPF."</td>";
+                echo "<td>".$medico->med_nome."</td>";
+                echo "<td>".$medico->med_email."</td>";
+                echo "<td>".$medico->med_telefone."</td>";
+                echo "<td>".$medico->med_endereco."</td>";
+                echo "<td>".$medico->med_cidade."</td>";
+                echo "<td>".$medico->med_estado."</td>";
+                echo "<td>".$medico->med_pais."</td>";
+
+              }
+              ?>
+            </tbody>
+          </table>
+
+
+
       <h1 class="text-center">Alterar Informações</h1>
 
         <div class="row">
@@ -234,20 +265,21 @@
           </div>
 
           <div class="col-md-8">
+            <form  method="post" action="<?= base_url()?>Doctor/alterarMedico">
             <div class="row">
               <div class="col-sm-6 form-group">
                 <input class="form-control" id="mediconome" name="mediconome" placeholder="Nome" type="text" required>
               </div>
               <div class="col-sm-6 form-group">
-                <input class="form-control" id="medicoemail" name="medicoemail" placeholder="Email" type="text" required>
+                <input class="form-control" id="medicoemail" name="medicoemail" placeholder="Email" type="email" required>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-6 form-group">
-                  <input class="form-control" id="medicosenha" name="medicosenha" placeholder="Senha" type="text" required>
+                  <input class="form-control" id="medicosenha" name="medicosenha" placeholder="Senha" type="password" required>
                 </div>
               <div class="col-sm-6 form-group">
-                  <input class="form-control" id="medicoconfsenha" name="medicoconfsenha" placeholder="Confirmar Senha" type="text" required>
+                  <input class="form-control" id="medicoconfsenha" name="medicoconfsenha" placeholder="Confirmar Senha" type="password" required>
                 </div>
             </div>
             <div class="row">
@@ -268,7 +300,10 @@
                   <input class="form-control" id="medicocidade" name="medicocidade" placeholder="Cidade" type="text" required>
                 </div>
                 <div class="col-sm-2 form-group">
-                  <input class="form-control" id="medicoestado" name="medicoestado" placeholder="Estado" type="text" required>
+                  <input class="form-control" id="medicoestado" name="medicoestado" placeholder="Estado" type="text" maxlength="2" required>
+                </div>
+                <div class="col-sm-4 form-group">
+                  <input class="form-control" id="medicopais" name="medicopais" placeholder="Pais" type="text" required>
                 </div>
             </div>
             <div class="row">
@@ -276,6 +311,7 @@
                 <button class="btn pull-right" type="submit">Alterar</button>
               </div>
             </div>
+          </form>
           </div><!-- cold 8 -->
         </div><!-- row -->
         <br>
@@ -329,8 +365,17 @@ $(document).ready(function(){
   $('#myNavbar a[href="#profile"]').tab('show');
 
   //ARQUIVO
-  $(document).on('ready', function() {
-    $("#input-b5").fileinput({showCaption: false});
+
+  $(document).ready(function() {
+    $('#tabela').DataTable();
+  } );
+
+    $(document).ready(function() {
+    $('#pacientes').DataTable();
+  } );
+
+
+
 </script>
 
 </body>

@@ -1,14 +1,26 @@
 <?php
 class Doctors_model extends CI_Model{
 
-	public function buscarMedicoCrm($crm){
+	public function buscarConsultas($cpf){
     
-    $this->db->where("Crm", $crm);
+    $this->db->where("med_CPF", $cpf);
 
-    $usuario = $this->db->get("Medicos")->row_array();
+    $usuario = $this->db->get("consulta")->result();
     return $usuario;
     }
 
+	public function buscarMedico($cpf){
+    
+    $this->db->where("med_CPF", $cpf);
+
+    $usuario = $this->db->get("medico")->result();
+    return $usuario;
+    }
+
+    public function alterarMedico($data){
+    	$this->db->where("med_CPF",$data['med_CPF']);
+    	$this->db->replace('medico',$data);
+    }
 
     
 }
