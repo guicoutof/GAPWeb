@@ -32,6 +32,7 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right" id="myNavbar">
         <li><a href="#home" aria-controls="home" role="tab" data-toggle="tab">PRESCRICAO</a></li>
+        <li><a href="#consumo" aria-controls="consumo" role="tab" data-toggle="tab">CONSUMO</a></li>
         <li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">PERFIL</a></li>
         <li><a href="<?php echo base_url('index.php/Logout') ?>">SAIR</a></li>
       </ul>
@@ -48,112 +49,193 @@
 
     <div role="tabpanel" class="tab-pane active" id="home">
       <div class="container">
-      <h1 class="text-center">PRESCRICAO</h1>
-      <div class="row">
-          <div class="col-md-4">
-            <span class="glyphicon glyphicon-edit"></span>
-          </div>
-          <form  method="post" action="<?= base_url()?>Prescritions/buscar">
-            <div class="col-md-8">
-              <div class="row">
-                <div class="col-sm-6 form-group">
-                  <input class="form-control" id="prescricaocpf" name="prescricaocpf" placeholder="CPF Paciente" type="text" required>
-                </div>
-                  <div class="col-sm-6 form-group">
-                    <input class="form-control" id="prescricaocrm" name="prescricaocrm" placeholder="CRM Medico" type="text" required>
-                  </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12 form-group">
-                  <textarea class="form-control" rows="5" id="prescricaodescricao" name="prescricaodescricao" placeholder="Descrição"></textarea>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div><!-- row -->
-      <br>
+      <h1 class="text-center">CONSULTAS</h1>
     
+        <!-- TABELA -->
+        <div class="container-fluid">
+          <table id="consultas" class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">ID Registro</th>
+              <th scope="col">ID Procedimento</th>
+              <th scope="col">Em Andamento</th>
+              <th scope="col">Mais</th>
+              <th scope="col">Concluir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?<?php 
+                if(!is_null($pacprocedimentos)){
+                foreach($pacprocedimentos as $pacprocedimento){
+                  foreach ($pacprocedimento as $pacproc) {
+                      if($pacproc->pac_proc_ativo == 1){
+                      echo "<tr>";
+                      echo "<td>".$pacproc->pac_proc_id."</td>";
+                      echo "<td>".$pacproc->proc_id."</td>";
+                      echo "<td>".$pacproc->pac_proc_ativo."</td>";
+                      echo "<td><a  href='".base_url('Patient/procedimento/'.$pacproc->proc_id)."' class='btn-info btn-sm'>Abrir Procedimento</a></td>";
+                      echo "<td><a  href='".base_url('Patient/concluirPacProc/'.$pacproc->proc_id)."' class='btn-success btn-sm'>Concluido</a></td>";
+                    }
+                  }
+                  
 
-        <table id="tabela2" class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Descrição</th>
-            <th scope="col">ID_Medico</th>
-            <th scope="col">ID_Paciente</th>
-            <th scope="col">Anexo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-          </tr>
-        </tbody>
-        </table>
-
-        <div class="row">
-          <div class="col-md-4">
-            <span class="glyphicon glyphicon-adjust"></span>
-          </div>
-
-          <div class="col-md-8">
-            <form  method="post" action="<?= base_url()?>Recipe/adicionar">
-              <div class="row">
-                <div class="col-sm-12 form-group">
-                  <input class="form-control" id="medicamento" name="medicamento" placeholder="Medicamento" type="text" required>
-                </div>
-                
-              </div>
-              <div class="row">
-                <div class="col-sm-4 form-group">
-                  <input class="form-control" id="qtdpordia" name="qtdpordia" placeholder="Quantidade x por dia" type="number" required>
-                </div>
-                <div class="col-sm-4 form-group">
-                    <input class="form-control" id="qtdprazo" name="qtdprazo" placeholder="Quantidade de dias" type="number" required>
-                  </div>
-
-              </div>
-              <div class="row">
-                  <div class="col-sm-12 form-group">
-                    <textarea class="form-control" rows="5" id="anotacao" placeholder="Anotação"></textarea>
-                  </div>
-              </div>
-            </form>
-          </div>
+            }
+            }
+            ?>
+          </tbody>
+          </table>
         </div>
-        <br>
+
       </div>
       </div><!-- tab -->
 
+      <!-- TAB 2 CONSUMO -->
+  <div role="tabpanel" class="tab-pane" id="consumo">
+    <div class="container">
+      <h1 class="text-center">CONSUMO</h1>
 
-    <!--  TAB 2 PROFILE-->
+          <table id="medicamentos" class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Descricao</th>
+              <th scope="col">X Dia</th>
+              <th scope="col">Limite</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?<?php
+                if(!is_null($medicamentos)){ 
+                foreach($medicamentos as $medicamento){
+                  foreach ($medicamento as $mdc) {
+                    echo "<tr>";
+                    echo "<td>".$mdc->mdc_id."</td>";
+                    echo "<td>".$mdc->mdc_nome."</td>";
+                    echo "<td>".$mdc->mdc_descricao."</td>";
+                    echo "<td>".$mdc->mdc_intervalo_dia."</td>";
+                    echo "<td>".$mdc->mdc_intervalo_limite."</td>";
+                    // echo "<td><a  href='".base_url('Patient/procedimento/'.$pacproc->proc_id)."' class='btn-success btn-sm'>Abrir Procedimento</a></td>";
+                  }
+                  
+
+            }
+            }
+            ?>
+          </tbody>
+          </table>
+
+          <br>
+          <h2 class="text-center">GRAVAR DIARIO</h2>
+          <div class="row">
+          <div class="col-md-4">
+            <span class="glyphicon glyphicon-ok"></span>
+          </div>
+          <form  method="post" action="<?= base_url()?>Patient/addConsumo">
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-sm-3 form-group">
+                <input class="form-control" id="idpracproc" name="idpracproc" placeholder="ID Registro" type="number" required>
+              </div>
+              <div class="col-sm-3 form-group">
+                <input class="form-control" id="idmdc" name="idmdc" placeholder="ID Medicamento" type="number" required>
+              </div>
+              <div class="col-sm-4 form-group">
+                <input class="form-control" id="datamdc" name="datamdc" placeholder="Data" type="date" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 form-group">
+                <button class="btn pull-right" type="submit">Gravar</button>
+              </div> <!-- form --><!-- group -->
+            </div><!-- row -->
+          </div>  <!-- cold m 8 -->
+        </form>
+        </div><!-- row -->
+        <br>
+
+          <h2 class="text-center">REGISTRO DE CONSUMO</h2>
+          <table id="consumo" class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">ID Registro</th>
+              <th scope="col">ID Medicamento</th>
+              <th scope="col">Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php 
+                if(!is_null($consumos)){
+                foreach($consumos as $consumo){
+                  foreach ($consumo as $key => $con_mdc) {
+                    echo "<tr>";
+                    echo "<td>".$con_mdc->pac_proc_id."</td>";
+                    echo "<td>".$con_mdc->mdc_id."</td>";
+                    echo "<td>".$con_mdc->csm_data."</td>";
+                    // echo "<td><a  href='".base_url('Patient/procedimento/'.$pacproc->proc_id)."' class='btn-success btn-sm'>Abrir Procedimento</a></td>";  
+
+                  }
+                    
+              }
+              }
+            ?>
+          </tbody>
+          </table>
+
+
+    </div>
+  </div>
+
+
+    <!--  TAB 3 PROFILE-->
   <div role="tabpanel" class="tab-pane" id="profile">
       <div class="container">
-      <h1 class="text-center">Alterar Informações</h1>
+
+        <h1 class="text-center">PACIENTE</h1>
+      <!-- PACIENTE -->
+
+
+          <table id="paciente" class="table table-hover">
+            <thead>
+              <tr>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Endereco</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>Pais</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <?php
+
+              foreach($paciente as $paciente){
+                echo "<tr>";
+                echo "<td>".$paciente->pac_CPF."</td>";
+                echo "<td>".$paciente->pac_nome."</td>";
+                echo "<td>".$paciente->pac_email."</td>";
+                echo "<td>".$paciente->pac_telefone."</td>";
+                echo "<td>".$paciente->pac_endereco."</td>";
+                echo "<td>".$paciente->pac_cidade."</td>";
+                echo "<td>".$paciente->pac_estado."</td>";
+                echo "<td>".$paciente->pac_pais."</td>";
+              }
+              ?>
+      </tbody>
+    </table>
+
+
+
+      <h2 class="text-center">ALTERAR INFORMAÇÕES</h2>
 
         <div class="row">
           <div class="col-md-4">
             <span class="glyphicon glyphicon-cog"></span>
           </div>
-
+          <form  method="post" action="<?= base_url()?>Patient/alterarPaciente">
           <div class="col-md-8">
             <div class="row">
               <div class="col-sm-6 form-group">
@@ -176,7 +258,7 @@
                 <input class="form-control" id="cpf" name="cpf" placeholder="CPF" type="text" required>
               </div>
               <div class="col-sm-6 form-group">
-                  <input class="form-control" id="pacientetelefone" name="pacientetelefone" placeholder="Telefone" type="text" required>
+                  <input class="form-control" id="telefone" name="telefone" placeholder="Telefone" type="text" required>
                 </div>  
             </div>
             <div class="row">
@@ -191,10 +273,13 @@
               <div class="col-sm-2 form-group">
                 <input class="form-control" id="estado" name="estado" placeholder="Estado" type="text" required>
               </div> 
+              <div class="col-sm-4 form-group">
+                  <input class="form-control" id="pais" name="pais" placeholder="Pais" type="text" required>
+                </div>
             </div>
             <div class="row">
               <div class="col-md-12 form-group">
-                <button class="btn pull-right" type="submit">Salvar</button>
+                <button class="btn pull-right" type="submit">Alterar</button>
               </div> <!-- form --><!-- group -->
             </div><!-- row -->
           </div>  <!-- cold m 8 -->
@@ -246,10 +331,18 @@ $(document).ready(function(){
 
   $('#myNavbar a[href="#home"]').tab('show');
   $('#myNavbar a[href="#profile"]').tab('show');
-
+  $('#myNavbar a[href="#consumo"]').tab('show');
 
 $(document).ready(function() {
-    $('#tabela2').DataTable();
+    $('#consultas').DataTable();
+} );
+
+$(document).ready(function() {
+    $('#paciente').DataTable();
+} );
+
+$(document).ready(function() {
+    $('#medicamentos').DataTable();
 } );
 
 </script>

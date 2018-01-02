@@ -80,7 +80,7 @@
           </table>
 
           <div class="row">
-            <a class="btn btn-primary" href="<?php echo base_url('Consulta/addProcedimento/'.$procedimentos[0]->con_id); ?>">Novo procedimento</a>
+            <a class="btn btn-primary" href="<?php echo base_url('Consulta/addProcedimento/'.$con_id); ?>">Novo procedimento</a>
           </div>
 
 

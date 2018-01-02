@@ -9,15 +9,16 @@ class Consulta extends CI_Controller{
         
         $this->load->model("Patients_model");
         $dados = $this->Patients_model->buscarPacienteCpf($pac_cpf);
+
         if($dados){
-            $data['pac_CPF'] = $dados['pac_CPF'];
+            $data['pac_CPF'] = $dados[0]->pac_CPF;
         }else{
             echo 'Paciente nao encontrado';
             return;
         }
 
 
-        $this->load->model("Consulta_model");// chama o modelo usuarios_model
+        $this->load->model("Consulta_model");
         $status = $this->Consulta_model->adicionarConsulta($data);
         redirect(base_url('Doctor/index'));
  

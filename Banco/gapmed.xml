@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.5.4.1deb2ubuntu2
+- https://www.phpmyadmin.net
+-
+- Host: localhost
+- Tempo de geração: 02/01/2018 às 16:08
+- Versão do servidor: 5.7.20-0ubuntu0.16.04.1
+- Versão do PHP: 7.0.26-2+ubuntu16.04.1+deb.sury.org+2
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="http://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="gapmed" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="ci_session">
+                CREATE TABLE `ci_session` (
+                  `id` varchar(40) NOT NULL DEFAULT '0',
+                  `ip_address` varchar(16) NOT NULL DEFAULT '0',
+                  `timestamp` int(50) NOT NULL,
+                  `data` blob NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="consulta">
+                CREATE TABLE `consulta` (
+                  `con_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `pac_CPF` varchar(11) NOT NULL,
+                  `med_CPF` varchar(11) NOT NULL,
+                  PRIMARY KEY (`con_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="consumo_medicamento">
+                CREATE TABLE `consumo_medicamento` (
+                  `pac_proc_id` int(11) NOT NULL,
+                  `mdc_id` int(11) NOT NULL,
+                  `csm_data` date NOT NULL,
+                  `csm_id` int(11) NOT NULL AUTO_INCREMENT,
+                  PRIMARY KEY (`csm_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="instrucao">
+                CREATE TABLE `instrucao` (
+                  `ins_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `proc_id` int(11) NOT NULL,
+                  `mdc_id` int(11) NOT NULL,
+                  `ins_procedimento` tinyint(1) NOT NULL,
+                  `ins_descricao` varchar(255) NOT NULL,
+                  `ins_geral` tinyint(1) NOT NULL,
+                  PRIMARY KEY (`ins_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="medicamento">
+                CREATE TABLE `medicamento` (
+                  `mdc_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `mdc_nome` varchar(45) NOT NULL,
+                  `mdc_descricao` varchar(255) NOT NULL,
+                  `mdc_intervalo_dia` tinyint(4) NOT NULL,
+                  `mdc_intervalo_limite` int(11) DEFAULT NULL,
+                  PRIMARY KEY (`mdc_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="medico">
+                CREATE TABLE `medico` (
+                  `med_CPF` varchar(11) NOT NULL,
+                  `med_nome` varchar(45) NOT NULL,
+                  `med_email` varchar(45) NOT NULL,
+                  `med_senha` varchar(255) NOT NULL,
+                  `med_telefone` varchar(45) NOT NULL,
+                  `med_endereco` varchar(255) NOT NULL,
+                  `med_cidade` varchar(45) NOT NULL,
+                  `med_estado` varchar(45) NOT NULL,
+                  `med_pais` varchar(45) NOT NULL,
+                  PRIMARY KEY (`med_CPF`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="paciente">
+                CREATE TABLE `paciente` (
+                  `pac_CPF` int(11) NOT NULL,
+                  `pac_nome` varchar(45) NOT NULL,
+                  `pac_email` varchar(45) NOT NULL,
+                  `pac_senha` varchar(255) NOT NULL,
+                  `pac_telefone` varchar(45) NOT NULL,
+                  `pac_endereco` varchar(255) NOT NULL,
+                  `pac_cidade` varchar(45) NOT NULL,
+                  `pac_estado` varchar(45) NOT NULL,
+                  `pac_pais` varchar(45) NOT NULL,
+                  PRIMARY KEY (`pac_CPF`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="pac_proc">
+                CREATE TABLE `pac_proc` (
+                  `proc_id` int(11) NOT NULL,
+                  `pac_proc_ativo` tinyint(1) NOT NULL,
+                  `pac_proc_id` int(11) NOT NULL AUTO_INCREMENT,
+                  PRIMARY KEY (`pac_proc_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="procedimento">
+                CREATE TABLE `procedimento` (
+                  `proc_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `con_id` int(11) NOT NULL,
+                  PRIMARY KEY (`proc_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:trigger name="trigger_addPacProc">
+                CREATE TRIGGER `trigger_addPacProc` AFTER INSERT ON `procedimento`
+                 FOR EACH ROW INSERT INTO pac_proc(proc_id,pac_proc_ativo) VALUES (NEW.proc_id,'1')
+            </pma:trigger>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Banco de dados: 'gapmed'
+    -->
+    <database name="gapmed">
+        <!-- Tabela ci_session -->
+        <table name="ci_session">
+            <column name="id">hm1b1t8sr5qc2q9v8ccq3uf31ulsdevj</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1514915941</column>
+            <column name="data">__ci_last_regenerate|i:1514915941;cpf|s:9:&quot;123456789&quot;;nome|s:13:&quot;Denise Sakiyo&quot;;email|s:7:&quot;de@nise&quot;;tipo|s:8:&quot;paciente&quot;;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">tj795n39pmvo5acj9thkuc2he0u6frqa</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1514916271</column>
+            <column name="data">__ci_last_regenerate|i:1514916271;cpf|s:9:&quot;123456789&quot;;nome|s:13:&quot;Denise Sakiyo&quot;;email|s:7:&quot;de@nise&quot;;tipo|s:8:&quot;paciente&quot;;</column>
+        </table>
+        <!-- Tabela consulta -->
+        <!-- Tabela consumo_medicamento -->
+        <!-- Tabela instrucao -->
+        <!-- Tabela medicamento -->
+        <table name="medicamento">
+            <column name="mdc_id">1</column>
+            <column name="mdc_nome">paracetamal</column>
+            <column name="mdc_descricao">para se ta mal</column>
+            <column name="mdc_intervalo_dia">2</column>
+            <column name="mdc_intervalo_limite">10</column>
+        </table>
+        <table name="medicamento">
+            <column name="mdc_id">2</column>
+            <column name="mdc_nome">Benegripe</column>
+            <column name="mdc_descricao">contra gripe</column>
+            <column name="mdc_intervalo_dia">3</column>
+            <column name="mdc_intervalo_limite">10</column>
+        </table>
+        <table name="medicamento">
+            <column name="mdc_id">3</column>
+            <column name="mdc_nome">benegripe</column>
+            <column name="mdc_descricao">para gripe</column>
+            <column name="mdc_intervalo_dia">3</column>
+            <column name="mdc_intervalo_limite">10</column>
+        </table>
+        <table name="medicamento">
+            <column name="mdc_id">4</column>
+            <column name="mdc_nome">Desconfiometro</column>
+            <column name="mdc_descricao">Sempre</column>
+            <column name="mdc_intervalo_dia">5</column>
+            <column name="mdc_intervalo_limite">0</column>
+        </table>
+        <!-- Tabela medico -->
+        <table name="medico">
+            <column name="med_CPF">44135878806</column>
+            <column name="med_nome">Guilherme Couto</column>
+            <column name="med_email">gui@couto</column>
+            <column name="med_senha">guicouto</column>
+            <column name="med_telefone">14996903532</column>
+            <column name="med_endereco">Rua Artur Whitaker 60</column>
+            <column name="med_cidade">Presidente Prudente</column>
+            <column name="med_estado">SP</column>
+            <column name="med_pais">Brasil</column>
+        </table>
+        <!-- Tabela paciente -->
+        <table name="paciente">
+            <column name="pac_CPF">123456789</column>
+            <column name="pac_nome">Denise Sakiyo</column>
+            <column name="pac_email">de@nise</column>
+            <column name="pac_senha">1234</column>
+            <column name="pac_telefone">999999999</column>
+            <column name="pac_endereco">Rua Martin</column>
+            <column name="pac_cidade">Presidente Prudente</column>
+            <column name="pac_estado">SP</column>
+            <column name="pac_pais">Brasil</column>
+        </table>
+        <table name="paciente">
+            <column name="pac_CPF">321654987</column>
+            <column name="pac_nome">Fabio</column>
+            <column name="pac_email">fabio@takaki</column>
+            <column name="pac_senha">fabio</column>
+            <column name="pac_telefone"></column>
+            <column name="pac_endereco"></column>
+            <column name="pac_cidade"></column>
+            <column name="pac_estado"></column>
+            <column name="pac_pais"></column>
+        </table>
+        <!-- Tabela pac_proc -->
+        <!-- Tabela procedimento -->
+    </database>
+</pma_xml_export>

@@ -142,10 +142,10 @@ FAZER TRIGER PARA QUANDO ALTERAR CPF DE UM MEDICO OU PACIENTE, ALTERAR NA CONSUL
                   <input class="form-control" id="pacientecidade" name="pacientecidade" placeholder="Cidade" type="text" required>
                 </div>
                 <div class="col-sm-2 form-group">
-                  <input class="form-control" id="pacienteestado" name="pacienteestado" placeholder="Estado" type="text" maxlength="2" required>
+                  <input class="form-control" id="pacienteestado" name="pacienteestado" placeholder="Estado" type="text" required>
                 </div>
                 <div class="col-sm-4 form-group">
-                  <input class="form-control" id="pacientepais" name="pacientepais" placeholder="Pais" type="text" maxlength="3" required>
+                  <input class="form-control" id="pacientepais" name="pacientepais" placeholder="Pais" type="text" required>
                 </div>
             </div>
             <div class="row">

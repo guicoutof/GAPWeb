@@ -31,9 +31,8 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right" id="myNavbar">
-        <li><a href="#prescrition" aria-controls="prescrition" role="tab" data-toggle="tab">PRECAUÇÕES</a></li>
-        <li><a href="#medician" aria-controls="medician" role="tab" data-toggle="tab">MEDICAMENTOS</a></li>
-        <li><a href="<?php echo base_url('Doctor/index')?>">VOLTAR</a></li>
+        <li><a href="#prescrition" aria-controls="prescrition" role="tab" data-toggle="tab">PROCEDIMENTO</a>
+        <li><a href="<?php echo base_url('Patient/index')?>">VOLTAR</a></li>
         <li><a href="<?php echo base_url('index.php/Logout') ?>">SAIR</a></li>
       </ul>
     </div>
@@ -51,23 +50,23 @@
 
       <!-- CONSULTA -->
       <div id="addprescricao" class="container">
-        <h1 class="text-center">Instruções</h1>
+        <h1 class="text-center">PROCEDIMENTO</h1>
       <!-- TABELA -->
           <div class="container-fluid">
-            <table id="instrucoes" class="table table-striped">
+            <table id="instrucoes" class="table table-hover">
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Procedimento</th>
                 <th scope="col">Medicamento</th>
-                <th scope="col">Preprocedimento</th>
+                <th scope="col">Pré Procedimento</th>
                 <th scope="col">Descrição</th>
-                <th scope="col">Geral</th>
+                <th scope="col">Procedimento Geral</th>
               </tr>
             </thead>
             <tbody>
               <?php
-                    // var_dump($instrucoes);var_dump($medicamentos);die;
+
                   foreach($instrucoes as $instrucao){
                     echo "<tr>";
                     echo "<td>".$instrucao->ins_id."</td>";
@@ -84,45 +83,12 @@
           </div>
 
 
-          <div class="container-fluid">
-            <div class="row">
-            <h1 class="text-center">Adicionar Instrução</h1>
-              <div class="col-md-4">
-                <span class="glyphicon glyphicon-edit"></span>
-              </div>
-              <form  method="post" action="<?= base_url()?>Consulta/addInstrucao">
-                <div class="col-md-8">
-                  <div class="row">
-                    <div class="col-sm-2 form-group">
-                      <input class="form-control" id="proc_id" name="proc_id"  type="number" placeholder="<?php echo $proc_id ?>"  disabled>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                      <input class="form-control" id="mdc_id" name="mdc_id" placeholder="ID Medicamento" type="number">
-                    </div>
-                    <div class="col-sm-8 form-group">
-                      <label class="radio-inline"><input type="radio" name="ins_procedimento" value="preprocedimento">Pré Procedimento</label>
-                      <label class="radio-inline"><input type="radio" name="ins_procedimento" value="geral">Geral</label>
-                    </div>
-                  </div>
-                    <textarea class="col-sm-12 form-control" rows="5" id="ins_descricao" name="ins_descricao" placeholder="Descrição"></textarea>
-                   <div class="row">
-                     <div class="col-md-12 form-group">
-                       <button class="btn pull-right" type="submit">Adicionar</button>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
-          </div>
-
-
-      </div>  
     </div>
 
     <div role="tabpanel" class="tab-pane" id="medician">
             <!-- RECEITA -->
 
-       <div class="container" id="receita" >
+      <!--  <div class="container" id="receita" >
       <h1 class="text-center">Medicamentos</h1>
 
         
@@ -171,7 +137,7 @@
                   <input class="form-control" id="qtdpordia" name="qtdpordia" placeholder="Quantidade x por dia" type="number" required>
                 </div>
                 <div class="col-sm-4 form-group">
-                    <input class="form-control" id="qtdprazo" name="qtdprazo" placeholder="Quantidade de dias" type="number" >
+                    <input class="form-control" id="qtdprazo" name="qtdprazo" placeholder="Quantidade de dias" type="number" required>
                   </div>
 
               </div>
@@ -190,7 +156,7 @@
         </div>
 
 
-      </div>
+      </div> -->
 
 
 
@@ -210,6 +176,14 @@
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a><br><br>
 </footer>
+
+<style>
+  footer{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+  }
+</style>
 
 <script>
 $(document).ready(function(){
