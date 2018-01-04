@@ -40,6 +40,7 @@
   </div>
 </nav>
 
+
 <!-- Parallax of home -->
 <div id="home" class="parallax" >
   <h1>Gerenciador de Acompanhamento<br>de Pacientes</h1>
@@ -66,11 +67,11 @@
       <p> Fale conosco</p>
       <p><span class="glyphicon glyphicon-map-marker"></span> Presidente Prudente, Br</p>
       <p><span class="glyphicon glyphicon-phone"></span> Phone: +55 14 996903532</p>
-      <p><span class="glyphicon glyphicon-envelope"></span> Email: gui_coutof@gmail.com</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> Email: guicoutof@gmail.com</p>
     </div>
     <!-- inputs -->
     <div class="col-md-8">
-      <form  method="post" action="<?= base_url()?>Contact/enviar">
+      <form  method="post" action="<?= base_url('Welcome/EnviarEmail')?>">
         <div class="row">
           <div class="col-sm-6 form-group">
             <input class="form-control" id="name" name="name" placeholder="Nome" type="text" required>
@@ -79,7 +80,7 @@
             <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
           </div>
         </div>
-        <textarea class="form-control" id="comments" name="comments" placeholder="Comentário" rows="5"></textarea>
+        <textarea class="form-control" id="mensagem" name="mensagem" placeholder="Mensagem" rows="5"></textarea>
         <br>
         <div class="row">
           <div class="col-md-12 form-group">

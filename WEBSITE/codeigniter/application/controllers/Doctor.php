@@ -34,7 +34,7 @@ class Doctor extends CI_Controller{
 			$this->load->model('Doctors_model');
 			$this->Doctors_model->alterarMedico($data);
 		}
-		$this->index();
+		redirect(base_url('Doctor/index'));
 	}
 }
 ?>

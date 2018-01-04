@@ -22,4 +22,25 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('index');
 	}
+
+	public function EnviarEmail()
+    {
+        // Carrega a library email
+        $this->load->library('email');
+        //Recupera os dados do formulário
+        $dados = $this->input->post();
+
+        $this->email->from($dados['email'],$dados['name']);
+		$this->email->subject("GAP Med");
+		$this->email->to("guicoutof@gmail.com");
+		$this->email->message($dados['mensagem']);
+		if($this->email->send()){
+			redirect(base_url());	
+		}else{
+			echo $this->email->print_debugger(array('headers'));
+		}
+
+		
+
+    }
 }

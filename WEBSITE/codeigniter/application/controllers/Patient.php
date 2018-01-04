@@ -81,8 +81,7 @@ class Patient extends CI_Controller{
         $this->load->model('Patients_model');
         $this->Patients_model->addConsumo($data);
 
-        $this->index();
-
+        redirect(base_url('Patient/index'));
     }
 
     public function concluirPacProc($proc_id){
@@ -94,7 +93,7 @@ class Patient extends CI_Controller{
 
         $this->Patients_model->concluirPacProc($data);
 
-        $this->index();
+        redirect(base_url('Patient/index'));
     }
 
     
