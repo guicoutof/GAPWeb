@@ -5,7 +5,7 @@
 - https://www.phpmyadmin.net
 -
 - Host: localhost
-- Tempo de geração: 02/01/2018 às 16:08
+- Tempo de geração: 06/01/2018 às 18:05
 - Versão do servidor: 5.7.20-0ubuntu0.16.04.1
 - Versão do PHP: 7.0.26-2+ubuntu16.04.1+deb.sury.org+2
 -->
@@ -31,7 +31,7 @@
                   `pac_CPF` varchar(11) NOT NULL,
                   `med_CPF` varchar(11) NOT NULL,
                   PRIMARY KEY (`con_id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
             </pma:table>
             <pma:table name="consumo_medicamento">
                 CREATE TABLE `consumo_medicamento` (
@@ -40,18 +40,18 @@
                   `csm_data` date NOT NULL,
                   `csm_id` int(11) NOT NULL AUTO_INCREMENT,
                   PRIMARY KEY (`csm_id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
             </pma:table>
             <pma:table name="instrucao">
                 CREATE TABLE `instrucao` (
                   `ins_id` int(11) NOT NULL AUTO_INCREMENT,
                   `proc_id` int(11) NOT NULL,
-                  `mdc_id` int(11) NOT NULL,
+                  `mdc_id` int(11) DEFAULT NULL,
                   `ins_procedimento` tinyint(1) NOT NULL,
-                  `ins_descricao` varchar(255) NOT NULL,
                   `ins_geral` tinyint(1) NOT NULL,
+                  `ins_descricao` varchar(255) NOT NULL,
                   PRIMARY KEY (`ins_id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
             </pma:table>
             <pma:table name="medicamento">
                 CREATE TABLE `medicamento` (
@@ -97,19 +97,26 @@
                   `pac_proc_ativo` tinyint(1) NOT NULL,
                   `pac_proc_id` int(11) NOT NULL AUTO_INCREMENT,
                   PRIMARY KEY (`pac_proc_id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
             </pma:table>
             <pma:table name="procedimento">
                 CREATE TABLE `procedimento` (
                   `proc_id` int(11) NOT NULL AUTO_INCREMENT,
                   `con_id` int(11) NOT NULL,
                   PRIMARY KEY (`proc_id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
             </pma:table>
             <pma:trigger name="trigger_addPacProc">
                 CREATE TRIGGER `trigger_addPacProc` AFTER INSERT ON `procedimento`
                  FOR EACH ROW INSERT INTO pac_proc(proc_id,pac_proc_ativo) VALUES (NEW.proc_id,'1')
             </pma:trigger>
+            <pma:procedure name="exibirProcConcluidos">
+                CREATE DEFINER=`root`@`localhost` PROCEDURE `exibirProcConcluidos`()
+                BEGIN
+                   SELECT * from instrucao WHERE (SELECT * FROM pac_proc WHERE pac_proc_ativo = 0);
+                   
+                END
+            </pma:procedure>
         </pma:database>
     </pma:structure_schemas>
 
@@ -119,10 +126,213 @@
     <database name="gapmed">
         <!-- Tabela ci_session -->
         <table name="ci_session">
+            <column name="id">0fejkuj5jft18qgqcjra1rus02dsrf2t</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515089231</column>
+            <column name="data">__ci_last_regenerate|i:1515089231;error|s:2584:&quot;220 smtp.gmail.com ESMTP g199sm2455364qke.73 - gsmtp
+&lt;br /&gt;&lt;pre&gt;hello: 250-smtp.gmail.com at your service, [177.130.96.102]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+&lt;/pre&gt;Failed to authenticate password. Error: 534-5.7.14 &lt;https://accounts.google.com/signin/continue?sarp=1&amp;scc=1&amp;plt=AKgnsbtB
+534-5.7.14 NDubTARoDlaTH1OpVF_eh2CtQJXY9xOKe6Ux_JPrROq4lum-pssgfVnQnTPKLlFfVH3okQ
+534-5.7.14 R7frwOa8H0zoFxKOi_4_wnJMlgL6PRgcEgB4hrQ5wXpsJUfREckAk95HmbDMK9VwJQE_bR
+534-5.7.14 A5U_ltk59EwBsHfDOCR2BTHMy2TgU4IY7YutLyqZvOnNwWDaaNuSNiDjbsZlDvg9o2wC5L
+534-5.7.14 aWDvJMpdcB750snnW67hQrMRFBQzU&gt; Please log in via your web browser and
+534-5.7.14 then try again.
+534-5.7.14  Learn more at
+534 5.7.14  https://support.google.com/mail/answer/78754 g199sm2455364qke.73 - gsmtp
+&lt;br /&gt;Unable to send email using PHP SMTP. Your server might not be configured to send mail using this method.&lt;br /&gt;Failed to authenticate password. Error: 534-5.7.14 &lt;https://accounts.google.com/signin/continue?sarp=1&amp;scc=1&amp;plt=AKgnsbvX
+534-5.7.14 7D1w0PN1WFL8Yq2q_aHvm-oVMAMzT9u4tjLHLnhChpzJgV6dQbBBKhDDKV5qt2MsCGL7ck
+534-5.7.14 pnunnXJJRQQzC33BxHQ0jCcwTCxaIkjYK0S7f8lL89qxxmnZ4KgbORrs0sOP4kI9rTQSx4
+534-5.7.14 AvkXa7uj_5e4r47zSY4aad7AueKjTQPlycNP668HIQPBelOKTlylgtG7WeYBaBYPXzWE-h
+534-5.7.14 wT16gaLUIZ-X6kRXHSQL1e0OAdZjY&gt; Please log in via your web browser and
+534-5.7.14 then try again.
+534-5.7.14  Learn more at
+534 5.7.14  https://support.google.com/mail/answer/78754 g199sm2455364qke.73 - gsmtp
+&lt;br /&gt;Unable to send email using PHP SMTP. Your server might not be configured to send mail using this method.&lt;br /&gt;&lt;pre&gt;Date: Thu, 4 Jan 2018 15:49:58 -0200
+From: &amp;quot;Guilherme&amp;quot; &amp;lt;gui_coutof@hotmail.com&amp;gt;
+Return-Path: &amp;lt;gui_coutof@hotmail.com&amp;gt;
+Subject: =?UTF-8?Q?GAP=20Med?=
+To: guicoutof@gmail.com
+Reply-To: &amp;lt;gui_coutof@hotmail.com&amp;gt;
+User-Agent: CodeIgniter
+X-Sender: gui_coutof@hotmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &amp;lt;5a4e6947c8f99@hotmail.com&amp;gt;
+Mime-Version: 1.0
+
+
+Content-Type: multipart/alternative; boundary=&amp;quot;B_ALT_5a4e6947c9093&amp;quot;
+
+This is a multi-part message in MIME format.
+Your email application may not support this format.
+
+--B_ALT_5a4e6947c9093
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+teste
+
+
+--B_ALT_5a4e6947c9093
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+teste
+
+--B_ALT_5a4e6947c9093--&lt;/pre&gt;&quot;;__ci_vars|a:1:{s:5:&quot;error&quot;;s:3:&quot;new&quot;;}</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">31snbe3q9gookao260of0ibl4am2stal</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515089669</column>
+            <column name="data">__ci_last_regenerate|i:1515089669;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">332hvb330rm6ooiu42tilonan682i8f3</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515260946</column>
+            <column name="data">__ci_last_regenerate|i:1515260946;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">5kal1pmlhos439u5lk2odlan4l96frn6</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515090442</column>
+            <column name="data">__ci_last_regenerate|i:1515090442;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">6l3eqi6d5iacprbdi88hsnntgosssavt</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515095553</column>
+            <column name="data">__ci_last_regenerate|i:1515095553;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">6pg77652g76vskqol3lafkekthq20t84</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515263435</column>
+            <column name="data">__ci_last_regenerate|i:1515263435;cpf|s:11:&quot;44135878800&quot;;nome|s:15:&quot;Guilherme Couto&quot;;email|s:9:&quot;gui@couto&quot;;tipo|s:6:&quot;medico&quot;;proc_id|s:1:&quot;1&quot;;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">8uokb7lddje06i17s7qt37cjue7qf9bh</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515084358</column>
+            <column name="data">__ci_last_regenerate|i:1515084358;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">9v89ibtcmsbj10eu3qc0nlfli8l7mgo5</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515268801</column>
+            <column name="data">__ci_last_regenerate|i:1515268801;cpf|s:9:&quot;123456789&quot;;nome|s:13:&quot;Denise Sakiyo&quot;;email|s:7:&quot;de@nise&quot;;tipo|s:8:&quot;paciente&quot;;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">bnslrphoeei6bi4r5p9h3hn5h2ciu8mk</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515095172</column>
+            <column name="data">__ci_last_regenerate|i:1515095172;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">bs7g41kv4gm5vt7f2o16bvajv19q4had</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515266016</column>
+            <column name="data">__ci_last_regenerate|i:1515266016;cpf|s:9:&quot;123456789&quot;;nome|s:13:&quot;Denise Sakiyo&quot;;email|s:7:&quot;de@nise&quot;;tipo|s:8:&quot;paciente&quot;;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">gs7bc6okp13esbik8osj5kn9d9c2u0c9</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515264034</column>
+            <column name="data">__ci_last_regenerate|i:1515264034;cpf|s:9:&quot;123456789&quot;;nome|s:13:&quot;Denise Sakiyo&quot;;email|s:7:&quot;de@nise&quot;;tipo|s:8:&quot;paciente&quot;;proc_id|s:1:&quot;1&quot;;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">hee0h67lmde0fosch67al4pv1a5c87er</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515088044</column>
+            <column name="data">__ci_last_regenerate|i:1515088044;error|s:526:&quot;Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.&lt;br /&gt;&lt;pre&gt;Date: Thu, 4 Jan 2018 15:14:37 -0200
+From: &amp;quot;gui&amp;quot; &amp;lt;gui_coutof@hotmail.com&amp;gt;
+Return-Path: &amp;lt;gui_coutof@hotmail.com&amp;gt;
+Reply-To: &amp;lt;gui_coutof@hotmail.com&amp;gt;
+X-Sender: gui_coutof@hotmail.com
+X-Priority: 3 (Normal)
+Message-ID: &amp;lt;5a4e60fdc8153@hotmail.com&amp;gt;
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+=?UTF-8?Q?GAP=20Med?=
+gui
+&lt;/pre&gt;&quot;;__ci_vars|a:1:{s:5:&quot;error&quot;;s:3:&quot;new&quot;;}</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">hgg9lg22hcmr90atrh8c6va06c5chn56</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515083643</column>
+            <column name="data">__ci_last_regenerate|i:1515083643;</column>
+        </table>
+        <table name="ci_session">
             <column name="id">hm1b1t8sr5qc2q9v8ccq3uf31ulsdevj</column>
             <column name="ip_address">127.0.0.1</column>
             <column name="timestamp">1514915941</column>
             <column name="data">__ci_last_regenerate|i:1514915941;cpf|s:9:&quot;123456789&quot;;nome|s:13:&quot;Denise Sakiyo&quot;;email|s:7:&quot;de@nise&quot;;tipo|s:8:&quot;paciente&quot;;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">ju0um9jjq76jlm1kl7k4rk8cfquanm5q</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515086065</column>
+            <column name="data">__ci_last_regenerate|i:1515086065;error|s:558:&quot;Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.&lt;br /&gt;&lt;pre&gt;Date: Thu, 4 Jan 2018 14:47:10 -0200
+From: &amp;quot;Gui&amp;quot; &amp;lt;guicoutof@hotmail.com&amp;gt;
+Return-Path: &amp;lt;guicoutof@hotmail.com&amp;gt;
+Reply-To: &amp;lt;guicoutof@hotmail.com&amp;gt;
+User-Agent: CodeIgniter
+X-Sender: guicoutof@hotmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &amp;lt;5a4e5a8e66a2e@hotmail.com&amp;gt;
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+=?UTF-8?Q?GAP=20Med?=
+gui
+&lt;/pre&gt;&quot;;__ci_vars|a:1:{s:5:&quot;error&quot;;s:3:&quot;new&quot;;}</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">m004h4suk4ip49jm4i91n6c9i8il4gu9</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515095613</column>
+            <column name="data">__ci_last_regenerate|i:1515095553;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">oi0lnd22llgcs97c5n1508hjkiaulbuj</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515262386</column>
+            <column name="data">__ci_last_regenerate|i:1515262386;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">ok2aquj45hh1lns2e8218uj15l1eni54</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515262744</column>
+            <column name="data">__ci_last_regenerate|i:1515262744;cpf|s:11:&quot;44135878800&quot;;nome|s:15:&quot;Guilherme Couto&quot;;email|s:9:&quot;gui@couto&quot;;tipo|s:6:&quot;medico&quot;;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">oup982o3knl4i9u6jm7050518appnak8</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515094857</column>
+            <column name="data">__ci_last_regenerate|i:1515094857;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">rcadh8mm5hallebia3un9s7qu0hho3dk</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515263125</column>
+            <column name="data">__ci_last_regenerate|i:1515263125;cpf|s:11:&quot;44135878800&quot;;nome|s:15:&quot;Guilherme Couto&quot;;email|s:9:&quot;gui@couto&quot;;tipo|s:6:&quot;medico&quot;;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">s1t1dvqmf8rob992l63gpbfvlit1ft14</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515260563</column>
+            <column name="data">__ci_last_regenerate|i:1515260563;</column>
         </table>
         <table name="ci_session">
             <column name="id">tj795n39pmvo5acj9thkuc2he0u6frqa</column>
@@ -130,9 +340,34 @@
             <column name="timestamp">1514916271</column>
             <column name="data">__ci_last_regenerate|i:1514916271;cpf|s:9:&quot;123456789&quot;;nome|s:13:&quot;Denise Sakiyo&quot;;email|s:7:&quot;de@nise&quot;;tipo|s:8:&quot;paciente&quot;;</column>
         </table>
+        <table name="ci_session">
+            <column name="id">urga7dct44sis07lt5l2os3ebt3cdpqk</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1514996158</column>
+            <column name="data">__ci_last_regenerate|i:1514996136;cpf|s:11:&quot;44135878806&quot;;nome|s:15:&quot;Guilherme Couto&quot;;email|s:9:&quot;gui@couto&quot;;tipo|s:6:&quot;medico&quot;;</column>
+        </table>
+        <table name="ci_session">
+            <column name="id">vmmq6mt4ut3qqorvurtjulrlgqn4jksl</column>
+            <column name="ip_address">127.0.0.1</column>
+            <column name="timestamp">1515090058</column>
+            <column name="data">__ci_last_regenerate|i:1515090058;</column>
+        </table>
         <!-- Tabela consulta -->
+        <table name="consulta">
+            <column name="con_id">1</column>
+            <column name="pac_CPF">123456789</column>
+            <column name="med_CPF">44135878800</column>
+        </table>
         <!-- Tabela consumo_medicamento -->
         <!-- Tabela instrucao -->
+        <table name="instrucao">
+            <column name="ins_id">1</column>
+            <column name="proc_id">1</column>
+            <column name="mdc_id">0</column>
+            <column name="ins_procedimento">0</column>
+            <column name="ins_geral">1</column>
+            <column name="ins_descricao">Repouso</column>
+        </table>
         <!-- Tabela medicamento -->
         <table name="medicamento">
             <column name="mdc_id">1</column>
@@ -164,7 +399,7 @@
         </table>
         <!-- Tabela medico -->
         <table name="medico">
-            <column name="med_CPF">44135878806</column>
+            <column name="med_CPF">44135878800</column>
             <column name="med_nome">Guilherme Couto</column>
             <column name="med_email">gui@couto</column>
             <column name="med_senha">guicouto</column>
@@ -198,6 +433,15 @@
             <column name="pac_pais"></column>
         </table>
         <!-- Tabela pac_proc -->
+        <table name="pac_proc">
+            <column name="proc_id">1</column>
+            <column name="pac_proc_ativo">0</column>
+            <column name="pac_proc_id">1</column>
+        </table>
         <!-- Tabela procedimento -->
+        <table name="procedimento">
+            <column name="proc_id">1</column>
+            <column name="con_id">1</column>
+        </table>
     </database>
 </pma_xml_export>
