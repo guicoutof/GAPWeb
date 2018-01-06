@@ -16,17 +16,6 @@
 
 </head>
 
-<!--
-FAZER TRIGER PARA QUANDO ALTERAR CPF DE UM MEDICO OU PACIENTE, ALTERAR NA CONSULTA TAMBÉM
-
-
-
-
-
-
-
--->
-
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -37,12 +26,12 @@ FAZER TRIGER PARA QUANDO ALTERAR CPF DE UM MEDICO OU PACIENTE, ALTERAR NA CONSUL
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">GM</a>
+      <a class="navbar-brand" >GM</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right" id="myNavbar">
-        <li><a href="#home" aria-controls="home" role="tab" data-toggle="tab">PACIENTE</a></li>
-        <li><a href="#prescrition" aria-controls="prescrition" role="tab" data-toggle="tab">CONSULTA</a></li>
+        <li><a href="#pacientes" aria-controls="pacientes" role="tab" data-toggle="tab">PACIENTES</a></li>
+        <li><a href="#consultas" aria-controls="consultas" role="tab" data-toggle="tab">CONSULTAS</a></li>
         <li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">PERFIL</a></li>
         <li><a href="<?php echo base_url('index.php/Logout') ?>">SAIR</a></li>
       </ul>
@@ -50,24 +39,14 @@ FAZER TRIGER PARA QUANDO ALTERAR CPF DE UM MEDICO OU PACIENTE, ALTERAR NA CONSUL
   </div>
 </nav>
 
-<h3><?php echo $this->session->flashdata('senha');?></h3>
-
-
-
 
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">
-    
-
-
-
-
-          <div class="container">
-        <h1 class="text-center">Pacientes</h1>
+    <div role="tabpanel" class="tab-pane active" id="pacientes">
+  
+        <div class="container">
+        <h1 class="text-center">PACIENTES</h1>
       <!-- PACIENTE -->
-
-
-          <table id="pacientes" class="table table-hover">
+          <table id="tabelapacientes" class="table table-hover">
             <thead>
               <tr>
                 <th>CPF</th>
@@ -83,7 +62,6 @@ FAZER TRIGER PARA QUANDO ALTERAR CPF DE UM MEDICO OU PACIENTE, ALTERAR NA CONSUL
             <tbody>
 
               <?php
-
               foreach($pacientes as $paciente){
                 echo "<tr>";
                 echo "<td>".$paciente->pac_CPF."</td>";
@@ -99,9 +77,6 @@ FAZER TRIGER PARA QUANDO ALTERAR CPF DE UM MEDICO OU PACIENTE, ALTERAR NA CONSUL
       </tbody>
     </table>
     <h1 class="text-center">Cadastrar Paciente</h1>
-
-
-
         <div class="row">
           <div class="col-md-4">
             <span class="glyphicon glyphicon-user"></span>
@@ -161,13 +136,14 @@ FAZER TRIGER PARA QUANDO ALTERAR CPF DE UM MEDICO OU PACIENTE, ALTERAR NA CONSUL
 
       </div>
     </div>
-    <div role="tabpanel" class="tab-pane" id="prescrition">
+    <div role="tabpanel" class="tab-pane" id="consultas">
       <!-- CONSULTA -->
+
       <div id="addprescricao" class="container">
-        <h1 class="text-center">Consultas</h1>
+        <h1 class="text-center">CONSULTAS</h1>
         <!-- TABELA -->
         <div class="container-fluid">
-          <table id="tabela" class="table table-hover">
+          <table id="tabelaconsultas" class="table table-hover">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -193,7 +169,7 @@ FAZER TRIGER PARA QUANDO ALTERAR CPF DE UM MEDICO OU PACIENTE, ALTERAR NA CONSUL
           </table>
         </div>
         <!-- ADICIONAR -->
-        <h1 class="text-center">Adocionar Consulta</h1>
+        <h1 class="text-center">Adicionar Consulta</h1>
         <div class="row">
           <div class="col-md-4">
             <span class="glyphicon glyphicon-edit"></span>
@@ -220,7 +196,7 @@ FAZER TRIGER PARA QUANDO ALTERAR CPF DE UM MEDICO OU PACIENTE, ALTERAR NA CONSUL
 
       <!-- PERFIL MEDICO -->
         <div id="perfil" class="container">
-          <h1 class="text-center">Doutor</h1>
+          <h1 class="text-center">DOUTOR</h1>
 
           <table id="medico" class="table table-hover table-inversed">
             <thead >
@@ -238,7 +214,6 @@ FAZER TRIGER PARA QUANDO ALTERAR CPF DE UM MEDICO OU PACIENTE, ALTERAR NA CONSUL
             <tbody>
 
               <?php
-
               foreach($medico as $medico){
                 echo "<tr>";
                 echo "<td>".$medico->med_CPF."</td>";
@@ -258,12 +233,10 @@ FAZER TRIGER PARA QUANDO ALTERAR CPF DE UM MEDICO OU PACIENTE, ALTERAR NA CONSUL
 
 
       <h1 class="text-center">Alterar Informações</h1>
-
         <div class="row">
           <div class="col-md-4">
             <span class="glyphicon glyphicon-cog"></span>
           </div>
-
           <div class="col-md-8">
             <form  method="post" action="<?= base_url()?>Doctor/alterarMedico">
             <div class="row">
@@ -312,14 +285,13 @@ FAZER TRIGER PARA QUANDO ALTERAR CPF DE UM MEDICO OU PACIENTE, ALTERAR NA CONSUL
               </div>
             </div>
           </form>
-          </div><!-- cold 8 -->
-        </div><!-- row -->
+          </div>
+        </div>
         <br>
-      </div><!-- container perfil-->
 
-    </div><!-- tab 3 -->
-
-  </div><!-- tabs -->
+      </div>
+    </div>
+  </div>
 
 
 
@@ -360,18 +332,18 @@ $(document).ready(function(){
   });
 })
   // TABS
-  $('#myNavbar a[href="#home"]').tab('show');
-  $('#myNavbar a[href="#prescrition"]').tab('show');
+  $('#myNavbar a[href="#pacientes"]').tab('show');
+  $('#myNavbar a[href="#consultas"]').tab('show');
   $('#myNavbar a[href="#profile"]').tab('show');
 
   //ARQUIVO
 
   $(document).ready(function() {
-    $('#tabela').DataTable();
+    $('#tabelaconsultas').DataTable();
   } );
 
     $(document).ready(function() {
-    $('#pacientes').DataTable();
+    $('#tabelapacientes').DataTable();
   } );
 
 

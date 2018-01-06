@@ -22,16 +22,16 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#home">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">GM</a>
+      <a class="navbar-brand" href="<?php base_url('index.php')?>">GM</a>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
+    <div class="collapse navbar-collapse" id="myPage">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#myPage">INICIO</a></li>
+        <li><a href="#home">INICIO</a></li>
         <li><a href="#about">SOBRE</a></li>
         <li><a href="#contact">CONTATO</a></li>
         <li><a href="<?php echo base_url('index.php/login') ?>">ENTRAR</a></li>
@@ -95,7 +95,7 @@
 
 <!-- Footer -->
 <footer class="text-center">
-  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+  <a class="up-arrow" href="#home" data-toggle="tooltip" title="TO TOP">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a><br><br>
 </footer>
@@ -106,7 +106,7 @@ $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip(); 
   
   // Add smooth scrolling to all links in navbar + footer link
-  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+  $(".navbar a, footer a[href='#home']").on('click', function(event) {
 
     // Make sure this.hash has a value before overriding default behavior
     if (this.hash !== "") {

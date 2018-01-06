@@ -11,8 +11,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="<?= base_url("assets/css/patientstyle.css")?>"  type="text/css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.16/af-2.2.2/r-2.2.1/datatables.min.css"/> 
-  <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/af-2.2.2/r-2.2.1/datatables.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.16/r-2.2.1/datatables.min.css"/> 
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/r-2.2.1/datatables.min.js"></script>
 
 </head>
 
@@ -27,7 +27,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">GM</a>
+      <a class="navbar-brand">GM</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right" id="myNavbar">
@@ -50,10 +50,9 @@
     <div role="tabpanel" class="tab-pane active" id="home">
       <div class="container">
       <h1 class="text-center">CONSULTAS</h1>
-    
         <!-- TABELA -->
-        <div class="container-fluid">
-          <table id="consultas" class="table table-hover">
+        <div class="container">
+          <table id="tabelaconsultas" class="table table-hover">
           <thead>
             <tr>
               <th scope="col">ID Registro</th>
@@ -64,7 +63,7 @@
             </tr>
           </thead>
           <tbody>
-            <?<?php 
+            <?php 
                 if(!is_null($pacprocedimentos)){
                 foreach($pacprocedimentos as $pacprocedimento){
                   foreach ($pacprocedimento as $pacproc) {
@@ -77,8 +76,6 @@
                       echo "<td><a  href='".base_url('Patient/concluirPacProc/'.$pacproc->proc_id)."' class='btn-success btn-sm'>Concluido</a></td>";
                     }
                   }
-                  
-
             }
             }
             ?>
@@ -94,7 +91,7 @@
     <div class="container">
       <h1 class="text-center">CONSUMO</h1>
 
-          <table id="medicamentos" class="table table-hover">
+          <table id="tabelamedicamentos" class="table table-hover">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -105,7 +102,7 @@
             </tr>
           </thead>
           <tbody>
-            <?<?php
+            <?php
                 if(!is_null($medicamentos)){ 
                 foreach($medicamentos as $medicamento){
                   foreach ($medicamento as $mdc) {
@@ -115,7 +112,6 @@
                     echo "<td>".$mdc->mdc_descricao."</td>";
                     echo "<td>".$mdc->mdc_intervalo_dia."</td>";
                     echo "<td>".$mdc->mdc_intervalo_limite."</td>";
-                    // echo "<td><a  href='".base_url('Patient/procedimento/'.$pacproc->proc_id)."' class='btn-success btn-sm'>Abrir Procedimento</a></td>";
                   }
                   
 
@@ -155,7 +151,7 @@
         <br>
 
           <h2 class="text-center">REGISTRO DE CONSUMO</h2>
-          <table id="consumo" class="table table-hover">
+          <table id="tabelaconsumo" class="table table-hover">
           <thead>
             <tr>
               <th scope="col">ID Registro</th>
@@ -171,9 +167,7 @@
                     echo "<tr>";
                     echo "<td>".$con_mdc->pac_proc_id."</td>";
                     echo "<td>".$con_mdc->mdc_id."</td>";
-                    echo "<td>".$con_mdc->csm_data."</td>";
-                    // echo "<td><a  href='".base_url('Patient/procedimento/'.$pacproc->proc_id)."' class='btn-success btn-sm'>Abrir Procedimento</a></td>";  
-
+                    echo "<td>".$con_mdc->csm_data."</td>";  
                   }
                     
               }
@@ -280,15 +274,16 @@
             <div class="row">
               <div class="col-md-12 form-group">
                 <button class="btn pull-right" type="submit">Alterar</button>
-              </div> <!-- form --><!-- group -->
-            </div><!-- row -->
-          </div>  <!-- cold m 8 -->
-        </div><!-- row -->
+              </div> 
+            </div>
+          </div> 
+          </form> 
+        </div>
         <br> 
       </div>
-    </div><!--  tab 2 -->
-  </div><!-- tab geral -->
- <!-- container -->
+    </div>
+  </div>
+
   
 
 <!-- Footer -->
@@ -334,15 +329,15 @@ $(document).ready(function(){
   $('#myNavbar a[href="#consumo"]').tab('show');
 
 $(document).ready(function() {
-    $('#consultas').DataTable();
+    $('#tabelaconsultas').DataTable();
 } );
 
 $(document).ready(function() {
-    $('#paciente').DataTable();
+    $('#tabelaconsumo').DataTable();
 } );
 
 $(document).ready(function() {
-    $('#medicamentos').DataTable();
+    $('#tabelamedicamentos').DataTable();
 } );
 
 </script>

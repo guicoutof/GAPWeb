@@ -27,7 +27,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">GM</a>
+      <a class="navbar-brand">GM</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right" id="myNavbar">
@@ -41,10 +41,10 @@
 
 
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">
+    <div role="tabpanel" class="tab-pane active" id="procedimento">
   
       <div class="container">
-        <h1 class="text-center">Procedimento</h1>
+        <h1 class="text-center">PROCEDIMENTO</h1>
 
 
           <table id="procedimentos" class="table table-hover">
@@ -80,7 +80,7 @@
           </table>
 
           <div class="row">
-            <a class="btn btn-primary" href="<?php echo base_url('Consulta/addProcedimento/'.$con_id); ?>">Novo procedimento</a>
+            <a class="btn" href="<?php echo base_url('Consulta/addProcedimento/'.$con_id); ?>">Novo procedimento</a>
           </div>
 
 

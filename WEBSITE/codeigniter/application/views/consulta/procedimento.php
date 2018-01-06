@@ -27,7 +27,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">GM</a>
+      <a class="navbar-brand">GM</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right" id="myNavbar">
@@ -41,17 +41,12 @@
 </nav>
 
 
-
-
-
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane" id="prescrition">
 
-
-
       <!-- CONSULTA -->
       <div id="addprescricao" class="container">
-        <h1 class="text-center">Instruções</h1>
+        <h1 class="text-center">INSTRUÇÕES</h1>
       <!-- TABELA -->
           <div class="container-fluid">
             <table id="instrucoes" class="table table-striped">
@@ -61,21 +56,20 @@
                 <th scope="col">Procedimento</th>
                 <th scope="col">Medicamento</th>
                 <th scope="col">Preprocedimento</th>
-                <th scope="col">Descrição</th>
                 <th scope="col">Geral</th>
+                <th scope="col">Descrição</th>
               </tr>
             </thead>
             <tbody>
               <?php
-                    // var_dump($instrucoes);var_dump($medicamentos);die;
                   foreach($instrucoes as $instrucao){
                     echo "<tr>";
                     echo "<td>".$instrucao->ins_id."</td>";
                     echo "<td>".$instrucao->proc_id."</td>";
                     echo "<td>".$instrucao->mdc_id."</td>";
                     echo "<td>".$instrucao->ins_procedimento."</td>";
-                    echo "<td>".$instrucao->ins_descricao."</td>";
                     echo "<td>".$instrucao->ins_geral."</td>";
+                    echo "<td>".$instrucao->ins_descricao."</td>";
               }
               $this->session->set_userdata('proc_id',$proc_id);
               ?>
@@ -101,7 +95,7 @@
                     </div>
                     <div class="col-sm-8 form-group">
                       <label class="radio-inline"><input type="radio" name="ins_procedimento" value="preprocedimento">Pré Procedimento</label>
-                      <label class="radio-inline"><input type="radio" name="ins_procedimento" value="geral">Geral</label>
+                      <label class="radio-inline"><input type="radio" name="ins_procedimento" value="geral">Procedimento Geral</label>
                     </div>
                   </div>
                     <textarea class="col-sm-12 form-control" rows="5" id="ins_descricao" name="ins_descricao" placeholder="Descrição"></textarea>
@@ -123,7 +117,7 @@
             <!-- RECEITA -->
 
        <div class="container" id="receita" >
-      <h1 class="text-center">Medicamentos</h1>
+      <h1 class="text-center">MEDICAMENTOS</h1>
 
         
         <br>
@@ -246,9 +240,6 @@ $(document).ready(function(){
 
   //ARQUIVO
 
-$(document).ready(function() {
-    $('#procedimentos').DataTable();
-  } );
 
   $(document).ready(function() {
     $('#instrucoes').DataTable();

@@ -27,7 +27,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">GM</a>
+      <a class="navbar-brand">GM</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right" id="myNavbar">
@@ -60,8 +60,8 @@
                 <th scope="col">Procedimento</th>
                 <th scope="col">Medicamento</th>
                 <th scope="col">Pré Procedimento</th>
-                <th scope="col">Descrição</th>
                 <th scope="col">Procedimento Geral</th>
+                <th scope="col">Descrição</th>
               </tr>
             </thead>
             <tbody>
@@ -73,8 +73,8 @@
                     echo "<td>".$instrucao->proc_id."</td>";
                     echo "<td>".$instrucao->mdc_id."</td>";
                     echo "<td>".$instrucao->ins_procedimento."</td>";
-                    echo "<td>".$instrucao->ins_descricao."</td>";
                     echo "<td>".$instrucao->ins_geral."</td>";
+                    echo "<td>".$instrucao->ins_descricao."</td>";
               }
               $this->session->set_userdata('proc_id',$proc_id);
               ?>
@@ -85,86 +85,6 @@
 
     </div>
 
-    <div role="tabpanel" class="tab-pane" id="medician">
-            <!-- RECEITA -->
-
-      <!--  <div class="container" id="receita" >
-      <h1 class="text-center">Medicamentos</h1>
-
-        
-        <br>
-
-        <table id="medicamentos" class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Descricao</th>
-            <th scope="col">X ao dia</th>
-            <th scope="col">Durante</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-              foreach($medicamentos as $medicamento){
-                echo "<tr>";
-                echo "<td>".$medicamento->mdc_id."</td>";
-                echo "<td>".$medicamento->mdc_nome."</td>";
-                echo "<td>".$medicamento->mdc_descricao."</td>";
-                echo "<td>".$medicamento->mdc_intervalo_dia."</td>";
-                echo "<td>".$medicamento->mdc_intervalo_limite."</td>";
-          }
-          ?>
-        </tbody>
-        </table>
-
-        <div class="row">
-          <h1 class="text-center">Adicionar Medicamento</h1>
-          <div class="col-md-4">
-            <span class="glyphicon glyphicon-adjust"></span>
-          </div>
-
-          <div class="col-md-8">
-            <form  method="post" action="<?= base_url()?>Consulta/addMedicamentos">
-              <div class="row">
-                <div class="col-sm-12 form-group">
-                  <input class="form-control" id="medicamento" name="medicamento" placeholder="Medicamento" type="text" required>
-                </div>
-                
-              </div>
-              <div class="row">
-                <div class="col-sm-4 form-group">
-                  <input class="form-control" id="qtdpordia" name="qtdpordia" placeholder="Quantidade x por dia" type="number" required>
-                </div>
-                <div class="col-sm-4 form-group">
-                    <input class="form-control" id="qtdprazo" name="qtdprazo" placeholder="Quantidade de dias" type="number" required>
-                  </div>
-
-              </div>
-              <div class="row">
-                  <div class="col-sm-12 form-group">
-                    <textarea class="form-control" rows="5" id="descricao" name="descricao" placeholder="Descriço"></textarea>
-                  </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12 form-group">
-                  <button class="btn pull-right" type="submit">Adicionar</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-
-
-      </div> -->
-
-
-
-
-
-
-
-    </div><!-- tab 3 -->
 
   </div><!-- tabs -->
 
@@ -220,17 +140,11 @@ $(document).ready(function(){
 
   //ARQUIVO
 
-$(document).ready(function() {
-    $('#procedimentos').DataTable();
-  } );
 
   $(document).ready(function() {
     $('#instrucoes').DataTable();
   } );
 
-    $(document).ready(function() {
-    $('#medicamentos').DataTable();
-  } );
 
 
 
