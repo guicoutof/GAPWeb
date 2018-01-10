@@ -91,7 +91,7 @@ class Patients_model extends CI_Model{
     }
 
     public function buscarConsumo($dados){
-        //var_dump($dados);die;
+        // var_dump($dados);die;
         if(!is_null($dados)){
         $i=0;
         foreach ($dados as $dado) {

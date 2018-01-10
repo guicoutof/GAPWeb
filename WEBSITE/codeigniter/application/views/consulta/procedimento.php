@@ -55,7 +55,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Procedimento</th>
                 <th scope="col">Medicamento</th>
-                <th scope="col">Preprocedimento</th>
+                <th scope="col">Pré Procedimento</th>
                 <th scope="col">Geral</th>
                 <th scope="col">Descrição</th>
               </tr>
@@ -77,6 +77,7 @@
             </table>
           </div>
 
+          <hr>
 
           <div class="container-fluid">
             <div class="row">
@@ -145,6 +146,8 @@
           ?>
         </tbody>
         </table>
+
+        <hr>
 
         <div class="row">
           <h1 class="text-center">Adicionar Medicamento</h1>

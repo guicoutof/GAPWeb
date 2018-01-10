@@ -8,6 +8,13 @@ class Consulta_model extends CI_Model{
 
     }
 
+    public function buscarConsulta($data){
+        $this->db->where("pac_CPF",$data['pac_CPF']);
+        $this->db->where("med_CPF",$this->session->userdata('cpf'));
+        return $this->db->get("consulta")->result();
+    }
+
+
     public function buscarProcedimento($con_id){
     
 	    $this->db->where("con_id", $con_id);

@@ -51,37 +51,37 @@
       <div class="container">
       <h1 class="text-center">CONSULTAS</h1>
         <!-- TABELA -->
-        <div class="container">
+        <!-- <div class="container"> -->
           <table id="tabelaconsultas" class="table table-hover">
           <thead>
             <tr>
               <th scope="col">ID Registro</th>
               <th scope="col">ID Procedimento</th>
-              <th scope="col">Em Andamento</th>
+              <!-- <th scope="col">Em Andamento</th> -->
               <th scope="col">Mais</th>
               <th scope="col">Concluir</th>
             </tr>
           </thead>
           <tbody>
             <?php 
-                if(!is_null($pacprocedimentos)){
+              if(!is_null($pacprocedimentos)){
                 foreach($pacprocedimentos as $pacprocedimento){
                   foreach ($pacprocedimento as $pacproc) {
                       if($pacproc->pac_proc_ativo == 1){
                       echo "<tr>";
                       echo "<td>".$pacproc->pac_proc_id."</td>";
                       echo "<td>".$pacproc->proc_id."</td>";
-                      echo "<td>".$pacproc->pac_proc_ativo."</td>";
+                      // echo "<td>".$pacproc->pac_proc_ativo."</td>";
                       echo "<td><a  href='".base_url('Patient/procedimento/'.$pacproc->proc_id)."' class='btn-info btn-sm'>Abrir Procedimento</a></td>";
                       echo "<td><a  href='".base_url('Patient/concluirPacProc/'.$pacproc->proc_id)."' class='btn-success btn-sm'>Concluido</a></td>";
-                    }
+                      }
                   }
-            }
-            }
+                }
+              }
             ?>
           </tbody>
           </table>
-        </div>
+        <!-- </div> -->
 
       </div>
       </div><!-- tab -->
@@ -104,24 +104,23 @@
           <tbody>
             <?php
                 if(!is_null($medicamentos)){ 
-                foreach($medicamentos as $medicamento){
-                  foreach ($medicamento as $mdc) {
-                    echo "<tr>";
-                    echo "<td>".$mdc->mdc_id."</td>";
-                    echo "<td>".$mdc->mdc_nome."</td>";
-                    echo "<td>".$mdc->mdc_descricao."</td>";
-                    echo "<td>".$mdc->mdc_intervalo_dia."</td>";
-                    echo "<td>".$mdc->mdc_intervalo_limite."</td>";
-                  }
-                  
-
-            }
-            }
+                  foreach($medicamentos as $medicamento){
+                    foreach ($medicamento as $mdc) {
+                      echo "<tr>";
+                      echo "<td>".$mdc->mdc_id."</td>";
+                      echo "<td>".$mdc->mdc_nome."</td>";
+                      echo "<td>".$mdc->mdc_descricao."</td>";
+                      echo "<td>".$mdc->mdc_intervalo_dia."</td>";
+                      echo "<td>".$mdc->mdc_intervalo_limite."</td>";
+                    }
+                 }
+                }
             ?>
           </tbody>
           </table>
 
-          <br>
+          <hr>
+
           <h2 class="text-center">GRAVAR DIARIO</h2>
           <div class="row">
           <div class="col-md-4">
@@ -148,9 +147,11 @@
           </div>  <!-- cold m 8 -->
         </form>
         </div><!-- row -->
-        <br>
+
+        <hr>
 
           <h2 class="text-center">REGISTRO DE CONSUMO</h2>
+
           <table id="tabelaconsumo" class="table table-hover">
           <thead>
             <tr>
@@ -162,16 +163,15 @@
           <tbody>
             <?php 
                 if(!is_null($consumos)){
-                foreach($consumos as $consumo){
-                  foreach ($consumo as $key => $con_mdc) {
-                    echo "<tr>";
-                    echo "<td>".$con_mdc->pac_proc_id."</td>";
-                    echo "<td>".$con_mdc->mdc_id."</td>";
-                    echo "<td>".$con_mdc->csm_data."</td>";  
+                  foreach($consumos as $consumo){
+                    foreach ($consumo as $con_mdc) {
+                      echo "<tr>";
+                      echo "<td>".$con_mdc->pac_proc_id."</td>";
+                      echo "<td>".$con_mdc->mdc_id."</td>";
+                      echo "<td>".$con_mdc->csm_data."</td>";  
+                    }      
                   }
-                    
-              }
-              }
+                }
             ?>
           </tbody>
           </table>
@@ -203,9 +203,7 @@
               </tr>
             </thead>
             <tbody>
-
               <?php
-
               foreach($paciente as $paciente){
                 echo "<tr>";
                 echo "<td>".$paciente->pac_CPF."</td>";
@@ -221,7 +219,7 @@
       </tbody>
     </table>
 
-
+      <hr>
 
       <h2 class="text-center">ALTERAR INFORMAÇÕES</h2>
 
@@ -295,7 +293,7 @@
 
 <script>
 $(document).ready(function(){
-  Initialize Tooltip
+  //Initialize Tooltip
   $('[data-toggle="tooltip"]').tooltip(); 
   
   // Add smooth scrolling to all links in navbar + footer link

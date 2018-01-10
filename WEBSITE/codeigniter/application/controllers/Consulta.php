@@ -5,7 +5,7 @@ class Consulta extends CI_Controller{
     public function adicionar(){
 
         $pac_cpf= $this->input->post("paccpf");
-        $data['med_CPF'] = $this->session->userdata['cpf'];
+        $data['med_CPF'] = $this->session->userdata('cpf');
         
         $this->load->model("Patients_model");
         $dados = $this->Patients_model->buscarPacienteCpf($pac_cpf);
@@ -89,6 +89,25 @@ class Consulta extends CI_Controller{
         $this->load->model('Consulta_model');
         $this->Consulta_model->addMedicamento($data);
         redirect(base_url('Consulta/procedimento/'.$this->session->userdata('proc_id')));
+
+    }
+
+    public function Diario($pac_CPF){
+        $data['pac_CPF'] = $pac_CPF;
+
+        $this->load->model('Consulta_model');
+        $this->load->model('Patients_model');
+
+        $data['consultas'] = $this->Consulta_model->buscarConsulta($data);
+        $data['procedimentos'] = $this->Patients_model->buscarPacProcedimentos($pac_CPF);
+
+ 
+        $data['consumos'] = $this->Patients_model->buscarConsumo($data['procedimentos']);
+        // var_dump($data['consumos']);die;
+
+        $this->load->view('consulta/diario',$data);
+
+
 
     }
 

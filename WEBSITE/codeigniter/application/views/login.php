@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="container">
-        <?php //if(!$this->session->userdata("usuario_logado")) : ?>
+
         <h1>Login</h1>
         <?php
         //Criação de formulario

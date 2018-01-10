@@ -57,6 +57,7 @@
                 <th>Cidade</th>
                 <th>Estado</th>
                 <th>Pais</th>
+                <th>Mais</th>
               </tr>
             </thead>
             <tbody>
@@ -72,10 +73,14 @@
                 echo "<td>".$paciente->pac_cidade."</td>";
                 echo "<td>".$paciente->pac_estado."</td>";
                 echo "<td>".$paciente->pac_pais."</td>";
+                echo "<td><a  href='".base_url('Consulta/Diario/'.$paciente->pac_CPF)."' class='btn-primary btn-sm'>Acompanhar Diário</a></td>";
               }
               ?>
       </tbody>
     </table>
+
+    <hr>
+
     <h1 class="text-center">Cadastrar Paciente</h1>
         <div class="row">
           <div class="col-md-4">
@@ -168,6 +173,9 @@
           </tbody>
           </table>
         </div>
+        
+        <hr>
+
         <!-- ADICIONAR -->
         <h1 class="text-center">Adicionar Consulta</h1>
         <div class="row">
@@ -230,7 +238,7 @@
             </tbody>
           </table>
 
-
+      <hr>
 
       <h1 class="text-center">Alterar Informações</h1>
         <div class="row">

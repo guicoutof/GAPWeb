@@ -51,7 +51,7 @@
 <div id="about" class="container text-center">
   <h3>GAP MED</h3>
   <p><em>Gerenciador de Acompanhamento de Pacientes</em></p>
-  <p>Consiste em acompanhar o paciente no cotidiano pós-consulta,cirurgia ou demais cuidados. O sistema auxiliará no dia a dia do passiente pois o tal poderá constantemente consultar suas prescrições médicas, medicamentos e observações que o médico lhe prescreveu e também, poderá haver atualizações constantes dos médicos cadastrados.</p>
+  <p>Consiste em acompanhar o paciente no cotidiano pós-consulta,cirurgia ou demais cuidados. O sistema auxiliará no dia a dia do passiente pois o tal poderá constantemente consultar suas prescrições médicas, medicamentos e observações que o médico lhe prescreveu, e poderá haver atualizações constantes dos respectivos médicos.</p>
   <br>
   
 </div>

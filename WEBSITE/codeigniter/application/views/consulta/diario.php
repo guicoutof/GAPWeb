@@ -31,8 +31,7 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right" id="myNavbar">
-        <li><a href="#prescrition" aria-controls="prescrition" role="tab" data-toggle="tab">PROCEDIMENTO</a>
-        <li><a href="<?php if($this->session->userdata('tipo')=='medico')echo base_url('Doctor/index'); else echo base_url('Patient/index')?>">VOLTAR</a></li>
+        <li><a href="<?php echo base_url('Doctor/index')?>">VOLTAR</a></li>
         <li><a href="<?php echo base_url('index.php/Logout') ?>">SAIR</a></li>
       </ul>
     </div>
@@ -41,50 +40,95 @@
 
 
 
-
-
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane" id="prescrition">
+    <div role="tabpanel" class="tab-pane active" id="procedimento">
+  
+      <div class="container">
+        <h1 class="text-center">DIARIO DO PACIENTE</h1>
+        <h1 class="text-center">Procedimentos</h1>
 
 
-
-      <!-- CONSULTA -->
-      <div id="addprescricao" class="container">
-        <h1 class="text-center">PROCEDIMENTO</h1>
-      <!-- TABELA -->
-          <div class="container-fluid">
-            <table id="instrucoes" class="table table-hover">
+          <table id="diario" class="table table-hover">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Procedimento</th>
-                <th scope="col">Medicamento</th>
-                <th scope="col">Pré Procedimento</th>
-                <th scope="col">Procedimento Geral</th>
-                <th scope="col">Descrição</th>
+              <th scope="col">ID Registro</th>
+              <th scope="col">ID Procedimento</th>
+              <th scope="col">Em Andamento</th>
+              <th scope="col">Mais</th>
               </tr>
             </thead>
             <tbody>
-              <?php
 
-                  foreach($instrucoes as $instrucao){
+              <?php
+                // var_dump($procedimentos);die;
+              if(!is_null($procedimentos)){
+                foreach($procedimentos as $procedimento){
+                  foreach ($procedimento as $proc) {
                     echo "<tr>";
-                    echo "<td>".$instrucao->ins_id."</td>";
-                    echo "<td>".$instrucao->proc_id."</td>";
-                    echo "<td>".$instrucao->mdc_id."</td>";
-                    echo "<td>".$instrucao->ins_procedimento."</td>";
-                    echo "<td>".$instrucao->ins_geral."</td>";
-                    echo "<td>".$instrucao->ins_descricao."</td>";
+                    echo "<td>".$proc->pac_proc_id."</td>";
+                    echo "<td>".$proc->proc_id."</td>";
+                    echo "<td>".$proc->pac_proc_ativo."</td>";
+                    echo "<td><a  href='".base_url('Patient/procedimento/'.$proc->proc_id)."' class='btn-info btn-sm'>Abrir Procedimento</a></td>";
+                  }
+                  
+                }
               }
-              $this->session->set_userdata('proc_id',$proc_id);
               ?>
             </tbody>
-            </table>
-          </div>
+          </table>
+          
+          <hr>
+
+          <h1 class="text-center">Medicamentos</h1>
+          <table id="consumo" class="table table-hover">
+            <thead>
+              <tr>
+              <th scope="col">#</th>  
+              <th scope="col">ID Registro</th>
+              <th scope="col">ID Medicamento</th>
+              <th scope="col">Data</th>
+            </tr>
+            </thead>
+            <tbody>
+
+              <?php
+              if(!is_null($consumos)){
+                foreach($consumos as $consumo){
+                  foreach ($consumo as $con) {
+                    echo "<tr>";
+                      echo "<td>".$con->csm_id."</td>";
+                      echo "<td>".$con->pac_proc_id."</td>";
+                      echo "<td>".$con->mdc_id."</td>";
+                      echo "<td>".$con->csm_data."</td>";  
+                  }
+                  
+                }
+              }
+              ?>
+            </tbody>
+          </table>
 
 
+
+
+
+      </div>
     </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
 
   </div><!-- tabs -->
 
@@ -96,14 +140,6 @@
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a><br><br>
 </footer>
-
-<style>
-  footer{
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-  }
-</style>
 
 <script>
 $(document).ready(function(){
@@ -135,14 +171,18 @@ $(document).ready(function(){
   });
 })
   // TABS
-  $('#myNavbar a[href="#prescrition"]').tab('show');
-  $('#myNavbar a[href="#medician"]').tab('show');
+  // $('#myNavbar a[href="#home"]').tab('show');
+  // $('#myNavbar a[href="#prescrition"]').tab('show');
+  // $('#myNavbar a[href="#profile"]').tab('show');
 
   //ARQUIVO
 
+$(document).ready(function() {
+    $('#diario').DataTable();
+  } );
 
-  $(document).ready(function() {
-    $('#instrucoes').DataTable();
+$(document).ready(function() {
+    $('#consumo').DataTable();
   } );
 
 
